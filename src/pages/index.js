@@ -10,7 +10,7 @@ import Link from '../components/Link'
 import withLayout from '../hoc/withLayout';
 import withResponsive from '../hoc/withResponsive';
 
-const IndexPage = ({ browser }) => (
+const IndexPage = ({ browser, projects }) => console.log(projects) || (
   <Container>
     <Box py={[0, null, null, '2em']}>
       <Text>Styled Components + Styled System is cool!</Text>

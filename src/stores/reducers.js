@@ -6,6 +6,7 @@ import { combineReducers } from 'redux-immutable';
 import { createResponsiveStateReducer } from 'redux-responsive';
 import fromPairs from 'lodash/fromPairs';
 import zip from 'lodash/zip';
+import { firebaseReducer } from 'react-redux-firebase'
 
 import { breakpoints } from '../components/ThemeProvider/theme';
 
@@ -22,6 +23,7 @@ const names = [
  */
 export default function createReducer(injectedReducers) {
   return combineReducers({
+    firebase: firebaseReducer,
     browser: createResponsiveStateReducer(fromPairs(zip(names, breakpoints.map((bp) => parseInt(bp, 10))))),
     ...injectedReducers,
   });
