@@ -1,6 +1,7 @@
 import React from 'react'
 import { compose } from 'redux';
 
+import Counter from '../containers/Counter'
 import Container from '../components/Container'
 import Box from '../components/Box'
 import Text from '../components/Text'
@@ -16,6 +17,7 @@ const IndexPage = ({ browser }) => (
       <Text>Styled Components + Styled System is cool!</Text>
       <Text>Crrent Breakpoint: {browser.mediaType}</Text>
     </Box>
+    <Counter />
     <BackgroundImage my="2em" src="https://loremflickr.com/1920/1080" ratio={9 / 16} />
     <Box mx="-1em">
       <Button mx="1em" is={Link} to="/about">Go to About</Button>
