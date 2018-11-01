@@ -36,5 +36,5 @@ export default {
   breakpoints,
   containerWidth,
   font,
-  duration: 250,
+  headerHeight: '5em',
 };

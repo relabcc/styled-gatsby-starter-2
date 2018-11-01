@@ -1,24 +1,27 @@
 import React from 'react'
 import Box from '../components/Box';
+import Flex from '../components/Flex';
 import Text from '../components/Text';
 import Link from '../components/Link';
 
-const Header = ({ siteTitle }) => (
-  <Box
+const Header = ({ siteTitle, ...props }) => (
+  <Flex
+    position="fixed"
     bg="primary"
-    mb="1.5em"
+    top={0}
+    left={0}
+    right={0}
+    alignItems="center"
+    {...props}
   >
-    <Box
-      px="1em"
-      py="1.5em"
-    >
+    <Box px="1em">
       <Text.h1>
         <Link to="/" color="white">
           {siteTitle}
         </Link>
       </Text.h1>
     </Box>
-  </Box>
+  </Flex>
 )
 
 export default Header
