@@ -1,4 +1,7 @@
-export const getColorByPropKey = (key) => (props) => {
-  const colorKey = props[key];
-  return props.theme.colors[colorKey] || colorKey;
-};
+import { style } from 'styled-system';
+
+export const customColor = (prop, cssProperty = 'color') => style ({
+  prop,
+  cssProperty,
+  key: 'colors',
+});
