@@ -26,6 +26,8 @@ import {
   flex,
   maxWidth,
   minWidth,
+  maxHeight,
+  minHeight,
   lineHeight,
   opacity,
 } from 'styled-system';
@@ -57,6 +59,8 @@ const Box = styled(tag)`
   ${flex}
   ${minWidth}
   ${maxWidth}
+  ${minHeight}
+  ${maxHeight}
   ${borderRadius}
   ${lineHeight}
   ${opacity}
