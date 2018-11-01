@@ -18,13 +18,13 @@ import tag from 'clean-tag';
 
 import Box from './Box';
 
-import { getColorByPropKey } from './utils/getColor';
+import { customColor } from './utils/getColor';
 import blacklist from './utils/blacklist';
 
 const active = css`
-  color: ${getColorByPropKey('hoverColor')};
-  background-color: ${getColorByPropKey('hoverBg')};
-  border-color: ${getColorByPropKey('hoverBorder')};
+  ${customColor('hoverColor')};
+  ${customColor('hoverBg', 'backgroundColor')};
+  ${customColor('hoverBorder', 'borderColor')};
 `;
 
 export const buttonStyle = css`

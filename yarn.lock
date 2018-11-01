@@ -8435,7 +8435,12 @@ react-hot-loader@^4.1.0:
     react-lifecycles-compat "^3.0.4"
     shallowequal "^1.0.2"
 
-react-is@^16.3.1, react-is@^16.3.2:
+react-is@^16.3.1:
+  version "16.6.0"
+  resolved "https://registry.yarnpkg.com/react-is/-/react-is-16.6.0.tgz#456645144581a6e99f6816ae2bd24ee94bdd0c01"
+  integrity sha512-q8U7k0Fi7oxF1HvQgyBjPwDXeMplEsArnKt2iYhuIF86+GBbgLHdAmokL3XUFjTd7Q363OSNG55FOGUdONVn1g==
+
+react-is@^16.3.2:
   version "16.5.2"
   resolved "https://registry.yarnpkg.com/react-is/-/react-is-16.5.2.tgz#e2a7b7c3f5d48062eb769fcb123505eb928722e3"
   integrity sha512-hSl7E6l25GTjNEZATqZIuWOgSnpXb3kD0DVCujmg46K5zLxsbiKaaT6VO9slkSBDPZfYs30lwfJwbOFOnoEnKQ==
@@ -9628,7 +9633,7 @@ style-loader@^0.21.0:
     loader-utils "^1.1.0"
     schema-utils "^0.4.5"
 
-styled-components@^3.4.9:
+styled-components@3.4.10:
   version "3.4.10"
   resolved "https://registry.yarnpkg.com/styled-components/-/styled-components-3.4.10.tgz#9a654c50ea2b516c36ade57ddcfa296bf85c96e1"
   integrity sha512-TA8ip8LoILgmSAFd3r326pKtXytUUGu5YWuqZcOQVwVVwB6XqUMn4MHW2IuYJ/HAD81jLrdQed8YWfLSG1LX4Q==
@@ -9643,7 +9648,14 @@ styled-components@^3.4.9:
     stylis-rule-sheet "^0.0.10"
     supports-color "^3.2.3"
 
-"styled-system@>=2.0.0 || >=3.0.0", styled-system@^3.1.6:
+"styled-system@>=2.0.0 || >=3.0.0":
+  version "3.0.2"
+  resolved "https://registry.yarnpkg.com/styled-system/-/styled-system-3.0.2.tgz#2189a6d829117d212fb6ac8ebc4260fdb75d1109"
+  integrity sha512-1fsnk6JtRZVoPo3515+mvaWdLjCXNN0jHvbSKrrz6niaW9fR1VLsx6VO1SBeZgjWo9dtonMhoyTB3oECAoVtrA==
+  dependencies:
+    prop-types "^15.6.2"
+
+styled-system@^3.1.11:
   version "3.1.11"
   resolved "https://registry.yarnpkg.com/styled-system/-/styled-system-3.1.11.tgz#a91a38cf7a0f0e625b897a04fdd506a359a3629f"
   integrity sha512-d0p32F7Y55uRWNDb1P0JcIiGVi13ZxiSCvn8zNS68exAKW9Q5jp+IGTXUIavQOD/J8r3tydtE3vRk8Ii2i39HA==
