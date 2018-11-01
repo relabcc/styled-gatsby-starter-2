@@ -4,6 +4,8 @@ import Helmet from 'react-helmet'
 import { StaticQuery, graphql } from 'gatsby'
 
 import Header from './Header'
+import Box from '../components/Box';
+import theme from '../components/ThemeProvider/theme';
 
 const Layout = ({ children }) => (
   <StaticQuery
@@ -27,8 +29,10 @@ const Layout = ({ children }) => (
         >
           <html lang="en" />
         </Helmet>
-        <Header siteTitle={data.site.siteMetadata.title} />
-        {children}
+        <Header height={theme.headerHeight} siteTitle={data.site.siteMetadata.title} />
+        <Box height="100vh" pt={theme.headerHeight}>
+          {children}
+        </Box>
       </div>
     )}
   />
