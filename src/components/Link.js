@@ -11,11 +11,9 @@ import {
 } from 'styled-system';
 import tag from 'clean-tag';
 import GatsbyLink from 'gatsby-link';
-import Box from './Box';
-import { buttonStyle } from './Button'
 
 import blacklist from './utils/blacklist';
-import { getColorByPropKey } from './utils/getColor';
+import { customColor } from './utils/getColor';
 
 const linkStyle = css`
   ${fontSize}
@@ -30,7 +28,7 @@ const linkStyle = css`
     pointer-events: none;
   `}
   &:hover {
-    color: ${getColorByPropKey('hoverColor')};
+    ${customColor('hoverColor')};
   }
 `;
 
