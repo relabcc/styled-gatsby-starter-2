@@ -1,6 +1,6 @@
 import React from 'react'
 
-import Layout from '../containers/Layout'
+import Layout from '../containers/Layout';
 import Container from '../components/Container'
 import Box from '../components/Box'
 import Text from '../components/Text'
@@ -8,11 +8,12 @@ import BackgroundImage from '../components/BackgroundImage'
 import Button from '../components/Button'
 import Link from '../components/Link'
 import VerticalCenter from '../components/VerticalCenter'
+import { mobileOrDesktop } from '../components/ThemeProvider/theme';
 
 const IndexPage = () => (
   <Layout>
     <VerticalCenter>
-      <Container py={[0, null, null, '2em']}>
+      <Container py={mobileOrDesktop(0, '2em')}>
         <Box>
           <Text>Styled Components + Styled System is cool!</Text>
         </Box>
