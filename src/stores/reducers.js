@@ -15,6 +15,7 @@ const names = [
   'md',
   'lg',
   'xl',
+  'xxl',
 ];
 
 /**
@@ -22,7 +23,7 @@ const names = [
  */
 export default function createReducer(injectedReducers) {
   return combineReducers({
-    browser: createResponsiveStateReducer(fromPairs(zip(names, breakpoints.map((bp) => parseInt(bp, 10))))),
+    browser: createResponsiveStateReducer(fromPairs(zip(names, breakpoints.map((bp) => parseInt(bp, 10) - 1)))),
     ...injectedReducers,
   });
 }
