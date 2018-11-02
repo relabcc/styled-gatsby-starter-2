@@ -10,13 +10,15 @@ import Button from '../components/Button'
 import Link from '../components/Link'
 import withResponsive from '../hoc/withResponsive';
 import VerticalCenter from '../components/VerticalCenter'
+import { mobileOrDesktop } from '../components/ThemeProvider/theme';
 
-const IndexPage = () => (
+const IndexPage = ({ isMobile }) => (
   <Layout>
     <VerticalCenter>
-      <Container py={[0, null, null, '2em']}>
+      <Container py={mobileOrDesktop(0, '2em')}>
         <Box>
           <Text>Styled Components + Styled System is cool!</Text>
+          <Text fontSize={mobileOrDesktop('1em', '1.5em')}>isMobile: {String(isMobile)}</Text>
         </Box>
         <Counter />
         <BackgroundImage my="2em" src="https://loremflickr.com/1920/1080" ratio={9 / 16} />
