@@ -38,4 +38,5 @@ export default {
   containerWidth,
   font,
   headerHeight: '5em',
+  zOrder: range(4).map((i) => 10 ** i),
 };
