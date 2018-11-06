@@ -12,6 +12,7 @@ const Header = ({ siteTitle, ...props }) => (
     left={0}
     right={0}
     alignItems="center"
+    zOrder={2}
     {...props}
   >
     <Box px="1em">

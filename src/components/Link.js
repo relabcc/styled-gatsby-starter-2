@@ -56,6 +56,8 @@ const Link = ({ to, button, blacklist, ...props }) => {
   );
 };
 
+Link.displayName = 'Link';
+
 Link.defaultProps = {
   blacklist,
   fontWeight: 'bold',

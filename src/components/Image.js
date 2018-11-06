@@ -16,4 +16,6 @@ Image.defaultProps = {
   width: 1,
 };
 
+Image.displayName = 'Image';
+
 export default Image;

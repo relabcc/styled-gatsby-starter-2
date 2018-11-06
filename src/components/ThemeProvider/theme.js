@@ -39,4 +39,5 @@ export default {
   font,
   headerHeight: '5em',
   mobileOrDesktop,
+  zOrder: range(4).map((i) => 10 ** i),
 };

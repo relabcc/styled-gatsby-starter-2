@@ -104,6 +104,8 @@ Button.defaultProps = {
   verticalAlign: 'text-top',
 };
 
+Button.displayName = 'Button';
+
 Button.secondary = (props) => (
   <Button
     bg="secondary"

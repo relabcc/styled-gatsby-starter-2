@@ -17,12 +17,8 @@ import {
   fontWeight,
   borderRadius,
   zIndex,
-  border,
-  borderBottom,
+  borders,
   borderColor,
-  borderLeft,
-  borderRight,
-  borderTop,
   flex,
   maxWidth,
   minWidth,
@@ -30,6 +26,7 @@ import {
   minHeight,
   lineHeight,
   opacity,
+  style,
 } from 'styled-system';
 
 import blacklist from './utils/blacklist';
@@ -50,11 +47,7 @@ const Box = styled(tag)`
   ${right}
   ${bottom}
   ${fontWeight}
-  ${border}
-  ${borderRight}
-  ${borderLeft}
-  ${borderBottom}
-  ${borderTop}
+  ${borders}
   ${borderColor}
   ${flex}
   ${minWidth}
@@ -71,12 +64,19 @@ const Box = styled(tag)`
   ${injectProps('verticalAlign')}
   ${injectProps('transform')}
   ${injectProps('transition')}
+  ${style({
+    prop: 'zOrder',
+    cssProperty: 'zIndex',
+    key: 'zOrder',
+  })}
   ${({ onClick }) => onClick && 'cursor: pointer;'}
 `;
 
 Box.defaultProps = {
   blacklist,
 };
+
+Box.displayName = 'Box';
 
 Box.inline = (props) => <Box is="span" display="inline-block" verticalAlign="middle" {...props} />;
 
