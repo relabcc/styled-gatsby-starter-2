@@ -25,4 +25,6 @@ SVG.propTypes = {
   children: PropTypes.node.isRequired,
 };
 
+SVG.displayName = 'SVG';
+
 export default SVG;

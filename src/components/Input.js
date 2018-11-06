@@ -86,4 +86,6 @@ Input.propTypes = {
   onBlur: PropTypes.func,
 };
 
+Input.displayName = 'Input';
+
 export default Input;

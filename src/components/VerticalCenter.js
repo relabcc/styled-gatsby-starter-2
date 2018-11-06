@@ -60,4 +60,6 @@ VerticalCenter.propTypes = {
   children: PropTypes.node,
 };
 
+VerticalCenter.displayName = 'VerticalCenter';
+
 export default VerticalCenter;

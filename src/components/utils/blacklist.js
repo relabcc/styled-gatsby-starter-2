@@ -15,5 +15,6 @@ export default [
   'hoverColor',
   'hoverBg',
   'hoverBorder',
+  'zOrder',
   'dispatch',
 ];

@@ -58,4 +58,6 @@ range(1, 7).forEach((key) => {
   );
 });
 
+Text.displayName = 'Text';
+
 export default Text;
