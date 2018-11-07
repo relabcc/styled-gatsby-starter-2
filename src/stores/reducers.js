@@ -3,9 +3,9 @@
  */
 
 import { combineReducers } from 'redux-immutable';
-import { createResponsiveStateReducer } from 'redux-responsive';
 import fromPairs from 'lodash/fromPairs';
 import zip from 'lodash/zip';
+import { createResponsiveStateReducer } from 'redux-responsive';
 
 import { breakpoints } from '../components/ThemeProvider/theme';
 
