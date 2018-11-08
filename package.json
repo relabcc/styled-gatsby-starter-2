@@ -24,7 +24,9 @@
     "styled-system": "^3.1.11"
   },
   "keywords": [
-    "gatsby"
+    "gatsby",
+    "styled-components",
+    "styled-system"
   ],
   "license": "MIT",
   "scripts": {
@@ -54,6 +56,6 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/gatsbyjs/gatsby-starter-default"
+    "url": "https://github.com/relabcc/styled-gatsby-starter-2"
   }
 }
