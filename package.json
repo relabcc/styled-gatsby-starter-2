@@ -34,17 +34,21 @@
     "styled-system": "^3.1.11"
   },
   "keywords": [
-    "gatsby"
+    "gatsby",
+    "styled-components",
+    "styled-system"
   ],
   "license": "MIT",
   "scripts": {
     "start": "npm run develop",
-    "prebuild": "npm run build:clean",
-    "build:clean": "rimraf public",
+    "cleanup": "rimraf public",
+    "prebuild": "npm run cleanup",
     "build": "gatsby build",
     "develop": "gatsby develop",
-    "serve": "npm run build && gatsby serve",
-    "deploy": "npm run build -- --prefix-paths && gh-pages -d public",
+    "preserve": "npm run build",
+    "serve": "gatsby serve",
+    "predeploy": "npm run build -- --prefix-paths",
+    "deploy": "gh-pages -d public",
     "format": "prettier --write '**/*.js'",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -62,6 +66,6 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/gatsbyjs/gatsby-starter-default"
+    "url": "https://github.com/relabcc/styled-gatsby-starter-2"
   }
 }
