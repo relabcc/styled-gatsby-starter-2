@@ -5,6 +5,7 @@ import Counter from '../containers/Counter'
 import Layout from '../containers/Layout';
 import Container from '../components/Container'
 import Box from '../components/Box'
+import Flex from '../components/Flex'
 import Circle from '../components/Circle'
 import Text from '../components/Text'
 import BackgroundImage from '../components/BackgroundImage'
@@ -18,16 +19,16 @@ const IndexPage = ({ isMobile }) => (
   <Layout>
     <VerticalCenter>
       <Container py={mobileOrDesktop(0, '2em')}>
-        <Box>
+        <Flex>
           <Text>
             Styled Components + Styled System is cool!
-            <Circle width="2em" bg="blue" color="white" display="inline-block" mx="1em" verticalAlign="middle">
-              <FaThumbsUp />
-            </Circle>
           </Text>
-          <Text fontSize={mobileOrDesktop('1em', '1.5em')}>isMobile: {String(isMobile)}</Text>
-        </Box>
+          <Circle width="2em" bg="blue" color="white" display="inline-block" mx="1em" verticalAlign="middle">
+            <FaThumbsUp />
+          </Circle>
+        </Flex>
         <Counter />
+        <Text fontSize={mobileOrDesktop('1em', '1.5em')}>isMobile: {String(isMobile)}</Text>
         <BackgroundImage my="2em" src="https://loremflickr.com/1920/1080" ratio={9 / 16} />
         <Box mx="-1em">
           <Button m="0.5em" is={Link} to="/about">Go to About</Button>
