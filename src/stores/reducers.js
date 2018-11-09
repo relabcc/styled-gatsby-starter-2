@@ -11,12 +11,12 @@ import { createResponsiveStateReducer } from 'redux-responsive';
 import { breakpoints } from '../components/ThemeProvider/theme';
 
 const names = [
+  'xxs',
   'xs',
   'sm',
   'md',
   'lg',
   'xl',
-  'xxl',
 ];
 
 /**
