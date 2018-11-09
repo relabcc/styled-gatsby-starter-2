@@ -18,7 +18,7 @@ import { mobileOrDesktop } from '../components/ThemeProvider/theme';
 const IndexPage = ({ isMobile }) => (
   <Layout>
     <VerticalCenter>
-      <Container py={mobileOrDesktop(0, '2em')}>
+      <Container py="2em">
         <Flex>
           <Text>
             Styled Components + Styled System is cool!
