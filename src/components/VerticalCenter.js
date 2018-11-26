@@ -32,7 +32,7 @@ class VerticalCenter extends PureComponent {
       <Box
         position="relative"
         height="100%"
-        innerRef={this.handleContainerRef}
+        ref={this.handleContainerRef}
         {...props}
       >
         <Measure
@@ -45,7 +45,7 @@ class VerticalCenter extends PureComponent {
               top={shouldCenter ? '50%' : 0}
               width={1}
               transform={shouldCenter && 'translateY(-50%)'}
-              innerRef={measureRef}
+              ref={measureRef}
             >
               {children}
             </Box>

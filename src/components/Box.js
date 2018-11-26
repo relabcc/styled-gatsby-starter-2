@@ -58,9 +58,7 @@ const Box = styled(tag)`
   ${lineHeight}
   ${opacity}
   ${injectProps('whiteSpace')}
-  ${injectProps('display')}
   ${injectProps('overflow')}
-  ${injectProps('overflowX')}
   ${injectProps('verticalAlign')}
   ${injectProps('transform')}
   ${injectProps('transition')}

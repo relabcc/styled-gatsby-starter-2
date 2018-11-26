@@ -10,11 +10,10 @@ export default [
   'transform',
   'transition',
   'overflow',
-  'opacity',
-  'alpha',
   'hoverColor',
   'hoverBg',
   'hoverBorder',
   'zOrder',
-  'dispatch',
+  'verticalAlign',
+  'whiteSpace',
 ];
