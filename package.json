@@ -6,7 +6,7 @@
   "dependencies": {
     "babel-plugin-styled-components": "^1.8.0",
     "clean-tag": "^2.0.0",
-    "firebase": "^5.5.2",
+    "firebase": "^5.5.9",
     "gatsby": "^2.0.40",
     "gatsby-link": "^2.0.6",
     "gatsby-plugin-manifest": "^2.0.7",
