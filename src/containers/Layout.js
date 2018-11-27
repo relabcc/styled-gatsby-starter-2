@@ -8,7 +8,7 @@ import Header from './Header'
 import Box from '../components/Box';
 import theme from '../components/ThemeProvider/theme';
 
-const Layout = ({ children }) => (
+const Layout = ({ children, noHeader }) => (
   <StaticQuery
     query={graphql`
       query SiteTitleQuery {
@@ -38,7 +38,7 @@ const Layout = ({ children }) => (
           <meta property="og:description" content={description} />
           <meta property="og:image" content={`${url}/fb.png`} />
         </Helmet>
-        <Header height={theme.headerHeight} siteTitle={title} />
+        {!noHeader && <Header height={theme.headerHeight} siteTitle={title} />}
         <Box height="100vh" pt={theme.headerHeight}>
           {children}
         </Box>
