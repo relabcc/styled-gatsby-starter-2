@@ -39,7 +39,7 @@ const Layout = ({ children, noHeader }) => (
           <meta property="og:image" content={`${url}/fb.png`} />
         </Helmet>
         {!noHeader && <Header height={theme.headerHeight} siteTitle={title} />}
-        <Box height="100vh" pt={theme.headerHeight}>
+        <Box height="100vh" pt={!noHeader && theme.headerHeight}>
           {children}
         </Box>
       </div>
