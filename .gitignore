@@ -7,3 +7,5 @@ firebase-debug.log
 # Build directory
 /public
 .DS_Store
+
+.firebase
