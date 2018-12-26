@@ -2,7 +2,9 @@ import React from 'react'
 import Box from '../components/Box';
 import Flex from '../components/Flex';
 import Text from '../components/Text';
-import Link from '../components/Link';
+import Link from '../i18n/Link';
+
+import Language from './Language'
 
 const Header = ({ siteTitle, ...props }) => (
   <Flex
@@ -15,12 +17,15 @@ const Header = ({ siteTitle, ...props }) => (
     zOrder={2}
     {...props}
   >
-    <Box px="1em">
+    <Box px="1em" flex={1}>
       <Text.h1>
         <Link to="/" color="white">
           {siteTitle}
         </Link>
       </Text.h1>
+    </Box>
+    <Box px="1em">
+      <Language />
     </Box>
   </Flex>
 )

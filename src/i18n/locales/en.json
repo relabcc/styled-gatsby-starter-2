@@ -1,0 +1,11 @@
+{
+  "AboutPage.backHome": "Back to Home",
+  "AboutPage.header": "This is About page",
+  "AboutPage.welcome": "Good to see you here",
+  "HomePage.buttons.about": "Go to About",
+  "HomePage.buttons.bad": "Bad Button",
+  "HomePage.buttons.good": "Good Button",
+  "HomePage.header": "Styled Components + Styled System is cool!",
+  "siteMetadata.description": "Styled Components + Styled System is cool!",
+  "siteMetadata.title": "Gatsby Styled Starter"
+}
