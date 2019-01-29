@@ -17,7 +17,7 @@ class Language extends Component {
   }
 
   handleChange = event => {
-    const { originalPath, changeLocale } = this.context
+    const { changeLocale } = this.context
     const { value } = event.target
 
     if (value === this.state.value) {
@@ -25,9 +25,7 @@ class Language extends Component {
     }
 
     this.setState({ value }, () => {
-      localStorage.setItem('language', value)
       changeLocale(value);
-      window.history.pushState(null, null, `/${value}${originalPath}`);
     })
   }
 

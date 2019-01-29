@@ -20,15 +20,17 @@ export default ComposedComponent => {
       }
     }
 
-    handleUpdateLocale = (locale) => this.setState({ locale })
+    handleChangeLocale = (locale) => this.setState({ locale }, () => {
+      localStorage.setItem('language', locale)
+      window.history.pushState(null, null, `/${locale}${this.state.originalPath}`);
+    })
 
     render() {
       return (
-        <LanguageContext.Provider value={Object.assign({ changeLocale: this.handleUpdateLocale }, this.state)}>
+        <LanguageContext.Provider value={Object.assign({ changeLocale: this.handleChangeLocale }, this.state)}>
           <LanguageContext.Consumer>
             {language => {
               const locale = language.locale || 'zh-Hant-TW'
-              console.log(locale)
               const messages = require(`./locales/${locale}.json`) // eslint-disable-line
               return (
                 <IntlProvider locale={locale} messages={messages}>
@@ -37,7 +39,6 @@ export default ComposedComponent => {
               )
             }}
           </LanguageContext.Consumer>
-
         </LanguageContext.Provider>
       )
     }
