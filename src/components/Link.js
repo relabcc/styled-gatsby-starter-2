@@ -10,7 +10,7 @@ import {
   display,
 } from 'styled-system';
 import tag from 'clean-tag';
-import GatsbyLink from 'gatsby-link';
+import { Link as GatsbyLink } from 'gatsby';
 
 import blacklist from './utils/blacklist';
 import { customColor } from './utils/getColor';

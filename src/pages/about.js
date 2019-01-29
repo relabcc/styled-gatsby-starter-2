@@ -1,15 +1,4 @@
-import React from 'react';
+import Page from '../containers/AboutPage'
+import withIntl from '../i18n/withIntl'
 
-import Container from '../components/Container';
-import Link from '../components/Link';
-import withLayout from '../hoc/withLayout';
-
-const AboutPage = () => (
-  <Container>
-    <h1>Hi from the second page</h1>
-    <p>Welcome to page 2</p>
-    <Link to="/">Go back to the homepage</Link>
-  </Container>
-);
-
-export default withLayout(AboutPage);
+export default withIntl(Page)

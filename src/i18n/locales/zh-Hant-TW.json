@@ -1,0 +1,11 @@
+{
+  "AboutPage.backHome": "回到首頁",
+  "AboutPage.header": "這是關於頁",
+  "AboutPage.welcome": "歡迎來到這一頁",
+  "HomePage.buttons.about": "關於",
+  "HomePage.buttons.bad": "不可點",
+  "HomePage.buttons.good": "範例Button",
+  "HomePage.header": "Styled Components + Styled System 超方便！",
+  "siteMetadata.description": "Styled Components + Styled System is cool!",
+  "siteMetadata.title": "Gatsby Styled Starter"
+}

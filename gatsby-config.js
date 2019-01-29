@@ -3,8 +3,6 @@ const pathPrefix = 'styled-gatsby-starter-2';
 
 module.exports = {
   siteMetadata: {
-    title: 'Styled Gatsby Starter',
-    description: 'Styled Components + Styled System is cool!',
     url: `https://${hostname}/${pathPrefix}`,
   },
   plugins: [

@@ -1,12 +1,20 @@
 import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
 import Measure from 'react-measure';
+import isFunction from 'lodash/isFunction'
 
 import Box from './Box';
 
 class VerticalCenter extends PureComponent {
-  state = {
-    count: 0,
+  state = {}
+
+  componentDidMount() {
+    this.timer = setInterval(this.clearCount, 200)
+    this.count = 0;
+  }
+
+  componentWillUnmount() {
+    clearInterval(this.timer)
   }
 
   handleContainerRef = (ref) => {
@@ -14,17 +22,26 @@ class VerticalCenter extends PureComponent {
   }
 
   handleResize = (contentRect) => {
-    const { count, shouldCenter } = this.state;
-    const shouldCenterNow = typeof this.containerRef !== 'undefined' && this.containerRef.getBoundingClientRect().height > contentRect.bounds.height;
+    const { shouldCenter } = this.state;
+    const shouldCenterNow = typeof this.containerRef !== 'undefined'
+      && this.containerRef.getBoundingClientRect().height > contentRect.bounds.height;
+    this.count += 1;
+
     this.setState({
-      count: count + Number(shouldCenter !== shouldCenterNow),
-      shouldCenter: count > 4 ? shouldCenter : shouldCenterNow,
+      shouldCenter: this.count > 4 ? shouldCenter : shouldCenterNow,
+    }, () => {
+      this.props.onAlignChange(this.state.shouldCenter)
     });
+  }
+
+  clearCount = () => {
+    this.count = 0
   }
 
   render() {
     const {
       children,
+      onAlignChange,
       ...props
     } = this.props;
     const { shouldCenter } = this.state;
@@ -47,7 +64,7 @@ class VerticalCenter extends PureComponent {
               transform={shouldCenter && 'translateY(-50%)'}
               ref={measureRef}
             >
-              {children}
+              {isFunction(children) ? children(shouldCenter) : children}
             </Box>
           )}
         </Measure>
@@ -56,10 +73,15 @@ class VerticalCenter extends PureComponent {
   }
 }
 
-VerticalCenter.propTypes = {
-  children: PropTypes.node,
-};
-
 VerticalCenter.displayName = 'VerticalCenter';
+
+
+VerticalCenter.propTypes = {
+  onAlignChange: PropTypes.func,
+}
+
+VerticalCenter.defaultProps = {
+  onAlignChange: () => {}
+}
 
 export default VerticalCenter;
