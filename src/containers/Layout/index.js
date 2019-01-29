@@ -1,8 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import Helmet from 'react-helmet'
-import { StaticQuery, graphql } from 'gatsby'
-import { withPrefix } from 'gatsby-link';
+import { StaticQuery, graphql, withPrefix } from 'gatsby'
 import { injectIntl } from 'react-intl'
 
 import Header from '../Header'
