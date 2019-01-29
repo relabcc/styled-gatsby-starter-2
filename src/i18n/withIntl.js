@@ -28,7 +28,6 @@ export default ComposedComponent => {
           <LanguageContext.Consumer>
             {language => {
               const locale = language.locale || 'zh-Hant-TW'
-              console.log(locale)
               const messages = require(`./locales/${locale}.json`) // eslint-disable-line
               return (
                 <IntlProvider locale={locale} messages={messages}>
