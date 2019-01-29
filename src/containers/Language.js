@@ -1,25 +1,23 @@
 import React, { Component } from 'react'
-import PropTypes from 'prop-types'
+
+import LanguageContext from '../i18n/LanguageContext';
 
 class Language extends Component {
-  static contextTypes = {
-    language: PropTypes.object,
-  }
+  static contextType = LanguageContext
 
   state = {
     value: '',
   }
 
   componentDidMount() {
-    const { language } = this.context
+    const { locale, detected } = this.context
     this.setState({
-      value: language.locale || language.detected,
+      value: locale || detected,
     })
   }
 
   handleChange = event => {
-    const { language } = this.context
-    const { originalPath } = language
+    const { originalPath, changeLocale } = this.context
     const { value } = event.target
 
     if (value === this.state.value) {
@@ -28,13 +26,13 @@ class Language extends Component {
 
     this.setState({ value }, () => {
       localStorage.setItem('language', value)
-      window.location.href = `/${value}${originalPath}`
+      changeLocale(value);
+      window.history.pushState(null, null, `/${value}${originalPath}`);
     })
   }
 
   render() {
-    const { language } = this.context
-    const { languages } = language
+    const { languages } = this.context
     const { value } = this.state
 
     if (!value) {
