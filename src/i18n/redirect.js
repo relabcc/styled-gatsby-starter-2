@@ -6,9 +6,8 @@ import { languages } from './index'
 class Redirect extends PureComponent {
   constructor(props) {
     super(props)
-
     const langKeys = languages.map(language => language.value)
-    const { pathname } = props.location
+    const { redirectPage } = props.pageContext
 
     // Skip build, Browsers only
     if (typeof window !== 'undefined') {
@@ -19,7 +18,7 @@ class Redirect extends PureComponent {
           fallback: 'zh-Hant-TW',
         })
 
-      const newUrl = withPrefix(`/${detected}${pathname}`)
+      const newUrl = withPrefix(`/${detected}${redirectPage}`)
       window.localStorage.setItem('language', detected)
       window.location.replace(newUrl)
     }
