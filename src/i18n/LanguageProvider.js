@@ -2,15 +2,16 @@ import React, { Component } from 'react'
 import { IntlProvider, addLocaleData } from 'react-intl'
 
 import LanguageContext from './LanguageContext'
-import { localeData, languages } from './locales'
+import { localeData } from './locales'
 
 addLocaleData(localeData)
 
 class LanguageProvider extends Component {
-  constructor() {
+  constructor(props) {
     super()
+    const { pageContext } = props
+    const { locale, languages } = pageContext
 
-    const [, locale] = window.location.pathname.split('/')
     this.state = {
       locale,
       languages,
@@ -18,10 +19,9 @@ class LanguageProvider extends Component {
   }
 
   handleChangeLocale = (locale) => {
-    const prevLocale = this.state.locale;
+    const prevLocale = this.state.locale
     this.setState({ locale }, () => {
       localStorage.setItem('language', locale)
-
       window.history.pushState(null, null, window.location.pathname.replace(prevLocale, locale));
     })
   }
@@ -44,5 +44,4 @@ class LanguageProvider extends Component {
     )
   }
 }
-
-export default LanguageProvider;
+export default LanguageProvider
