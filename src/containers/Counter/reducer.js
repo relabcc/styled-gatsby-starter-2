@@ -1,12 +1,11 @@
 import { fromJS } from 'immutable';
 import { createActions, handleActions, combineActions } from 'redux-actions';
 
-export const INCREMENT = 'counter/INCREMENT';
-export const DECREMENT = 'counter/DECREMENT';
-
-const { increment, decrement } = createActions({
-  INCREMENT: () => ({ amount: 1 }),
-  DECREMENT: () => ({ amount: -1 })
+const { counter: { increment, decrement } } = createActions({
+  COUNTER: {
+    INCREMENT: () => ({ amount: 1 }),
+    DECREMENT: () => ({ amount: -1 })
+  }
 });
 
 const initialState = fromJS({ count: 0 });
