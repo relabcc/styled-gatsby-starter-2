@@ -10,6 +10,6 @@ module.exports = {
   defaultLocale: 'zh-Hant-TW',
   languages: [
     { value: 'zh-Hant-TW', text: '繁體中文' },
-    { value: 'en', text: 'English' },
+    { value: 'en-US', text: 'English' },
   ],
 }
