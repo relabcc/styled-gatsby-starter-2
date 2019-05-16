@@ -49,26 +49,23 @@ export const buttonStyle = css`
   cursor: pointer;
   &:hover,
   &:focus {
-    ${(props) => !props.disabled && active}
+    ${props => !props.disabled && active}
     outline: none;
   }
-  ${(props) => props.active && !props.disabled && active}
-  ${(props) => props.disabled && `
+  ${props => props.active && !props.disabled && active}
+  ${props =>
+    props.disabled &&
+    `
     cursor: not-allowed;
     opacity: 0.5;
   `}
 `;
 
 const ButtonBase = styled(tag)`
-  ${buttonStyle}
+  ${buttonStyle};
 `;
 
-const InButtonSpan = (props) => (
-  <Box
-    is="span"
-    {...props}
-  />
-);
+const InButtonSpan = props => <Box is="span" {...props} />;
 
 const Button = ({
   leftIcon,
@@ -79,43 +76,80 @@ const Button = ({
   ...props
 }) => (
   <ButtonBase {...props}>
-    {leftIcon ? <InButtonSpan mr={iconSpacing}>{leftIcon()}</InButtonSpan> : null}
+    {leftIcon ? (
+      <Box is={leftIcon} mr={iconSpacing} verticalAlign={verticalAlign} />
+    ) : null}
     <InButtonSpan verticalAlign={verticalAlign}>{children}</InButtonSpan>
-    {rightIcon ? <InButtonSpan ml={iconSpacing}>{rightIcon()}</InButtonSpan> : null}
+    {rightIcon ? (
+      <Box is={rightIcon} ml={iconSpacing} verticalAlign={verticalAlign} />
+    ) : null}
   </ButtonBase>
 );
 
 Button.defaultProps = {
   blacklist,
   is: 'button',
-  fontSize: '1.25em',
   border: '2px solid',
   borderColor: 'primary',
   bg: 'primary',
   color: 'white',
-  hoverColor: 'primary',
-  hoverBg: 'white',
-  px: '2.5em',
+  hoverColor: 'white',
+  hoverBg: 'primaryHover',
+  hoverBorder: 'primaryHover',
+  px: '1.5em',
   py: '0.75em',
   fontWeight: 'bold',
   iconSpacing: '0.25em',
   borderRadius: '0.25em',
   display: 'inline-block',
-  verticalAlign: 'text-top',
+  verticalAlign: 'middle',
 };
 
 Button.displayName = 'Button';
 
-Button.secondary = (props) => (
+Button.danger = props => (
   <Button
-    bg="secondary"
-    borderColor="secondary"
-    hoverColor="secondary"
+    bg="danger"
+    borderColor="danger"
+    hoverBg="dangerHover"
+    hoverBorder="dangerHover"
     {...props}
   />
 );
 
-Button.transparent = (props) => (
+Button.secondary = props => (
+  <Button
+    bg="secondary"
+    borderColor="secondary"
+    hoverBg="secondaryHover"
+    hoverBorder="secondaryHover"
+    {...props}
+  />
+);
+
+Button.outline = props => (
+  <Button
+    border="2px solid"
+    borderColor="primary"
+    bg="transparent"
+    color="primary"
+    hoverColor="white"
+    {...props}
+  />
+);
+
+Button.outline.danger = props => (
+  <Button.danger
+    border="2px solid"
+    borderColor="danger"
+    bg="transparent"
+    color="danger"
+    hoverColor="white"
+    {...props}
+  />
+);
+
+Button.transparent = props => (
   <Button
     border="1px solid transparent"
     bg="transparent"
