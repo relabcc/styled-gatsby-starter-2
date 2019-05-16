@@ -27,7 +27,11 @@ export default {
     black,
     text: black,
     primary: flatternColors.blue,
+    danger: flatternColors.red,
+    primaryHover: colors.blue[9],
+    dangerHover: colors.red[9],
     secondary: flatternColors.green,
+    secondaryHover: colors.green[9],
     variations: colors,
     fade: {
       white: generateFade(255, 255, 255),
