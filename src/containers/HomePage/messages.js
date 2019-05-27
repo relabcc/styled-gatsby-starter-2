@@ -16,9 +16,9 @@ export default defineMessages({
     id: `${scope}.buttons.about`,
     defaultMessage: '關於',
   },
-  good: {
-    id: `${scope}.buttons.good`,
-    defaultMessage: '範例Button',
+  admin: {
+    id: `${scope}.buttons.admin`,
+    defaultMessage: '後台',
   },
   bad: {
     id: `${scope}.buttons.bad`,

@@ -8,7 +8,7 @@ class I18nLink extends PureComponent {
   render() {
     const { to, children, ...rest } = this.props;
     const { locale } = this.context;
-      const toWithLang = locale ? `/${locale}${to}` : `${to}`
+    const toWithLang = locale ? `/${locale}${to}` : `${to}`
     return (
       <Link to={toWithLang} {...rest}>
         {children}

@@ -7,13 +7,16 @@ import { fromJS } from 'immutable';
 import { createResponsiveStoreEnhancer } from 'redux-responsive';
 
 import createReducer from './reducers';
-import { firebaseEnhancer } from '../services/firebase';
 
 export default function configureStore(initialState = {}) {
   const enhancers = [
-    firebaseEnhancer,
     createResponsiveStoreEnhancer({ calculateInitialState: false }),
   ];
+
+  if (typeof window !== 'undefined') {
+    const { firebaseEnhancer } = require('../services/firebase');
+    enhancers.push(firebaseEnhancer)
+  }
 
   // If Redux DevTools Extension is installed use it, otherwise use Redux compose
   /* eslint-disable no-underscore-dangle */

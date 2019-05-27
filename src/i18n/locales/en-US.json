@@ -2,10 +2,14 @@
   "AboutPage.backHome": "Back to Home",
   "AboutPage.header": "This is About page",
   "AboutPage.welcome": "Good to see you here",
+  "AdminPage.backHome": "Back to Home",
+  "AdminPage.header": "Admin Page (Login Required)",
+  "AdminPage.logout": "Logout",
   "HomePage.buttons.about": "Go to About",
+  "HomePage.buttons.admin": "Admin Page",
   "HomePage.buttons.bad": "Bad Button",
-  "HomePage.buttons.good": "Good Button",
   "HomePage.header": "Styled Components + Styled System is cool!",
+  "LoginPage.login": "Login",
   "siteMetadata.description": "Styled Components + Styled System is cool!",
   "siteMetadata.title": "Gatsby Styled Starter"
 }
