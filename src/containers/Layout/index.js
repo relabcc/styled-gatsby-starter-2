@@ -4,9 +4,10 @@ import Helmet from 'react-helmet'
 import { StaticQuery, graphql, withPrefix } from 'gatsby'
 import { injectIntl } from 'react-intl'
 
+import Box from 'components/Box';
+import theme from 'components/ThemeProvider/theme';
+
 import Header from '../Header'
-import Box from '../../components/Box';
-import theme from '../../components/ThemeProvider/theme';
 import messages from './messages'
 
 const Layout = ({ children, noHeader, intl }) => (

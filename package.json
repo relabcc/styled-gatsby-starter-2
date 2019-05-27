@@ -1,7 +1,7 @@
 {
   "name": "styled-gatsby-starter",
   "description": "Gatsby starter with styled-system",
-  "version": "1.0.6",
+  "version": "1.0.7",
   "author": "Renddi Yeh <renddi@relab.cc>",
   "dependencies": {
     "babel-plugin-styled-components": "^1.10.0",

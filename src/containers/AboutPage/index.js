@@ -1,10 +1,10 @@
 import React from 'react';
 import { FormattedMessage } from 'react-intl';
 
-import Layout from '../Layout'
-import Container from '../../components/Container';
+import Container from 'components/Container';
+import Link from 'i18n/Link';
 
-import Link from '../../i18n/Link';
+import Layout from '../Layout'
 import messages from './messages';
 
 const AboutPage = () => (
