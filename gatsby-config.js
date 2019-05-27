@@ -14,8 +14,8 @@ module.exports = {
         name: 'Styled Gatsby Starter',
         short_name: 'Starter',
         start_url: '/',
-        "theme_color": "#ffffff",
-        "background_color": "#ffffff",
+        'theme_color': '#ffffff',
+        'background_color': '#ffffff',
         display: 'minimal-ui',
         icon: 'static/android-chrome-512x512.png', // This path is relative to the root of the site.
       },
