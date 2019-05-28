@@ -1,8 +1,8 @@
 import React, { PureComponent } from 'react'
 import PropTypes from 'prop-types'
 
-import Link from '../components/Link'
-import LanguageContext from '../i18n/LanguageContext';
+import Link from 'components/Link'
+import LanguageContext from './LanguageContext';
 
 class I18nLink extends PureComponent {
   render() {

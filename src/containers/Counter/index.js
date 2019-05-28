@@ -1,10 +1,10 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import Flex from '../../components/Flex';
-import Box from '../../components/Box';
-import Button from '../../components/Button';
-import Text from '../../components/Text';
+import Flex from 'components/Flex';
+import Box from 'components/Box';
+import Button from 'components/Button';
+import Text from 'components/Text';
 
 import withCounter from './hoc';
 

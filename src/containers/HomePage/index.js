@@ -2,20 +2,20 @@ import React from 'react'
 import { FaThumbsUp, FaLock } from 'react-icons/fa';
 import { FormattedMessage } from 'react-intl'
 
-import Layout from '../Layout';
+import Container from 'components/Container'
+import Box from 'components/Box'
+import Flex from 'components/Flex'
+import Circle from 'components/Circle'
+import Text from 'components/Text'
+import BackgroundImage from 'components/BackgroundImage'
+import Button from 'components/Button'
+import VerticalCenter from 'components/VerticalCenter'
+import { mobileOrDesktop } from 'components/ThemeProvider/theme';
+
+import Link from 'i18n/Link'
+
 import Counter from '../Counter';
-import Container from '../../components/Container'
-import Box from '../../components/Box'
-import Flex from '../../components/Flex'
-import Circle from '../../components/Circle'
-import Text from '../../components/Text'
-import BackgroundImage from '../../components/BackgroundImage'
-import Button from '../../components/Button'
-import VerticalCenter from '../../components/VerticalCenter'
-import { mobileOrDesktop } from '../../components/ThemeProvider/theme';
-
-import Link from '../../i18n/Link'
-
+import Layout from '../Layout';
 import messages from './messages'
 
 const IndexPage = () => (

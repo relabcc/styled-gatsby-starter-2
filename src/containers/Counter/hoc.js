@@ -1,8 +1,8 @@
 import { bindActionCreators, compose } from 'redux';
 import { connect } from 'react-redux';
 
+import injectReducer from 'utils/injectReducer';
 import reducer, { increment, decrement } from './reducer';
-import injectReducer from '../../utils/injectReducer';
 
 const mapStateToProps = (state) => ({
   count: state.getIn(['counter', 'count']),
