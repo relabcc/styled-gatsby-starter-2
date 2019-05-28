@@ -1,10 +1,10 @@
 import React from 'react';
 import { FormattedMessage } from 'react-intl';
 
-import Container from '../../components/Container';
-import Box from '../../components/Box';
+import Container from 'components/Container';
+import Box from 'components/Box';
 
-import Link from '../../i18n/Link';
+import Link from 'i18n/Link';
 import messages from './messages';
 
 const AdminPage = () => (
