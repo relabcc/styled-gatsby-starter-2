@@ -12,14 +12,14 @@ class Redirect extends PureComponent {
     // Skip build, Browsers only
     if (typeof window !== 'undefined') {
       const detected =
-        window.localStorage.getItem('language') ||
+        window.localStorage.getItem(`${APP_NAME}_LANG`) ||
         browserLang({
           languages: langKeys,
           fallback: 'zh-Hant-TW',
         })
 
       const newUrl = withPrefix(`/${detected}${redirectPage}`)
-      window.localStorage.setItem('language', detected)
+      window.localStorage.setItem(`${APP_NAME}_LANG`, detected)
       window.location.replace(newUrl)
     }
   }

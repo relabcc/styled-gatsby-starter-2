@@ -16,14 +16,16 @@ const Layout = ({ children, noHeader, intl }) => (
       query SiteTitleQuery {
         site {
           siteMetadata {
+            title
+            description
             url
           }
         }
       }
     `}
-    render={({ site: { siteMetadata: { url } } }) => {
-      const title = intl.formatMessage(messages.title);
-      const description = intl.formatMessage(messages.description);
+    render={({ site: { siteMetadata } }) => {
+      const title = messages.title ? intl.formatMessage(messages.title) : siteMetadata.title;
+      const description = messages.description ? intl.formatMessage(messages.description) : siteMetadata.description;
       return (
         <div>
           <Helmet>
@@ -36,10 +38,10 @@ const Layout = ({ children, noHeader, intl }) => (
             <link rel="mask-icon" color="#5bbad" href={withPrefix('/safari-pinned-tab.svg')} />
             <meta name="msapplication-TileColor" content="#da532c" />
             <meta name="theme-color" content="#ffffff" />
-            <meta property="og:url" content={url} />
+            <meta property="og:url" content={siteMetadata.url} />
             <meta property="og:title" content={title} />
             <meta property="og:description" content={description} />
-            <meta property="og:image" content={`${url}/fb.png`} />
+            <meta property="og:image" content={`${siteMetadata.url}/fb.png`} />
           </Helmet>
           {!noHeader && <Header height={theme.headerHeight} siteTitle={title} />}
           <Box height="100vh" pt={!noHeader && theme.headerHeight}>
