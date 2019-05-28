@@ -1,4 +1,7 @@
 const path = require('path')
+const snakeCase = require('lodash/snakeCase')
+
+const info = require('./package.json')
 const { languages } = require('./src/i18n/locales')
 
 const validatePrefixEntry = prefix => {
@@ -74,8 +77,13 @@ exports.onCreatePage = ({ page, actions }) => {
   })
 }
 
-exports.onCreateWebpackConfig = ({ stage, actions }) => {
+exports.onCreateWebpackConfig = ({ stage, actions, plugins }) => {
   actions.setWebpackConfig({
+    plugins: [
+      plugins.define({
+        APP_NAME: JSON.stringify(snakeCase(info.name).toUpperCase()),
+      }),
+    ],
     resolve: {
       modules: [path.resolve(__dirname, 'src'), 'node_modules'],
     },

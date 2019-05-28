@@ -21,7 +21,7 @@ class LanguageProvider extends Component {
   handleChangeLocale = (locale) => {
     const prevLocale = this.state.locale
     this.setState({ locale }, () => {
-      localStorage.setItem('language', locale)
+      localStorage.setItem(`${APP_NAME}_LANG`, locale)
       window.history.pushState(null, null, window.location.pathname.replace(prevLocale, locale));
     })
   }
