@@ -6,6 +6,7 @@
   "dependencies": {
     "babel-plugin-styled-components": "^1.10.0",
     "better-react-spinkit": "^2.0.4",
+    "bowser": "^2.4.0",
     "browser-lang": "^0.0.1",
     "clean-tag": "^2.0.3",
     "firebase": "5.9.0",
