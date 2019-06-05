@@ -5,6 +5,7 @@
   "author": "Renddi Yeh <renddi@relab.cc>",
   "dependencies": {
     "babel-plugin-styled-components": "^1.10.0",
+    "bowser": "^2.4.0",
     "browser-lang": "^0.0.1",
     "clean-tag": "^2.0.3",
     "gatsby": "^2.3.16",
