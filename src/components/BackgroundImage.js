@@ -1,27 +1,26 @@
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
+import { background } from 'styled-system';
 
 import Box from './Box';
-import injectProps from './utils/injectProps';
 
 const BackgroundImage = styled(Box)`
   position: relative;
+  ${background}
   background-image: url(${({ src }) => src});
-  ${injectProps('backgroundImage')}
-  ${injectProps('backgroundPosition')}
   background-repeat: no-repeat;
   ${(props) => props.height ? '' : `padding-top: ${props.ratio * 100}%;`}
 `;
 
 BackgroundImage.propTypes = {
   src: PropTypes.string,
-  backgroundImage: PropTypes.string,
+  backgroundSize: PropTypes.string,
   backgroundPosition: PropTypes.string,
 };
 
 BackgroundImage.defaultProps = {
   ratio: 1,
-  backgroundImage: 'cover',
+  backgroundSize: 'cover',
   backgroundPosition: '50% 50%',
 };
 

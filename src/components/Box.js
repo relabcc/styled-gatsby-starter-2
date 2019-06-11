@@ -3,28 +3,14 @@ import styled from 'styled-components';
 import tag from 'clean-tag';
 import {
   space,
-  width,
-  display,
-  textAlign,
-  height,
-  top,
-  left,
-  right,
-  bottom,
+  layout,
+  typography,
   position,
   color,
-  fontSize,
-  fontWeight,
   borderRadius,
   zIndex,
-  borders,
-  borderColor,
+  border,
   flex,
-  maxWidth,
-  minWidth,
-  maxHeight,
-  minHeight,
-  lineHeight,
   opacity,
   style,
 } from 'styled-system';
@@ -34,32 +20,18 @@ import injectProps from './utils/injectProps';
 
 const Box = styled(tag)`
   ${space}
-  ${width}
-  ${display}
-  ${height}
+  ${layout}
+  ${position}
+  ${typography}
   ${color}
-  ${fontSize}
   ${position}
   ${zIndex}
-  ${textAlign}
-  ${top}
-  ${left}
-  ${right}
-  ${bottom}
-  ${fontWeight}
-  ${borders}
-  ${borderColor}
+  ${border}
   ${flex}
-  ${minWidth}
-  ${maxWidth}
-  ${minHeight}
-  ${maxHeight}
   ${borderRadius}
-  ${lineHeight}
   ${opacity}
   ${injectProps('whiteSpace')}
   ${injectProps('overflow')}
-  ${injectProps('verticalAlign')}
   ${injectProps('transform')}
   ${injectProps('transition')}
   ${style({

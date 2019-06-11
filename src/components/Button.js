@@ -1,19 +1,15 @@
 import React from 'react';
 import styled, { css } from 'styled-components';
 import {
-  themeGet,
-  fontSize,
+  typography,
   space,
   color,
-  width,
-  borders,
-  borderColor,
+  layout,
+  border,
   borderRadius,
-  letterSpacing,
-  fontWeight,
   position,
-  display,
 } from 'styled-system';
+import themeGet from '@styled-system/theme-get';
 import tag from 'clean-tag';
 
 import Box from './Box';
@@ -33,17 +29,13 @@ export const buttonStyle = css`
   font-family: inherit;
   line-height: 1;
   text-decoration: none;
-  ${display}
-  ${fontSize}
+  ${typography}
+  ${layout}
   ${position}
   ${space}
   ${color}
-  ${width}
-  ${borders}
-  ${borderColor}
+  ${border}
   ${borderRadius}
-  ${fontWeight}
-  ${letterSpacing}
   appearance: none;
   transition: all ${themeGet('duration', 250)}ms;
   cursor: pointer;
