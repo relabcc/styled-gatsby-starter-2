@@ -2,16 +2,11 @@ import React from 'react';
 import styled from 'styled-components';
 import range from 'lodash/range';
 import {
-  fontSize,
-  fontWeight,
-  lineHeight,
+  typography,
   space,
   color,
   display,
-  textAlign,
   position,
-  letterSpacing,
-  fontFamily,
 } from 'styled-system';
 import tag from 'clean-tag';
 
@@ -21,17 +16,11 @@ import injectProps from './utils/injectProps';
 const Text = styled(tag)`
   margin-top: 0;
   margin-bottom: 0;
+  ${typography}
   ${display}
-  ${fontSize}
   ${space}
   ${color}
-  ${textAlign}
-  ${fontWeight}
-  ${fontFamily}
-  ${lineHeight}
-  ${letterSpacing}
   ${position}
-  ${injectProps('verticalAlign')}
   ${injectProps('textTransform')}
 `;
 
@@ -45,7 +34,6 @@ Text.defaultProps = {
 Text.inline = (props) => <Text is="span" {...props} />;
 Text.bold = (props) => <Text fontWeight="bold" {...props} />;
 Text.thin = (props) => <Text fontWeight="200" {...props} />;
-Text.dosis = (props) => <Text fontFamily="Dosis" {...props} />;
 
 range(1, 7).forEach((key) => {
   const h = `h${key}`;

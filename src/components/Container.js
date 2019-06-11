@@ -1,12 +1,9 @@
-import { maxWidth } from 'styled-system';
-import styled from 'styled-components';
+import React from 'react';
 
 import Box from './Box';
 import { containerWidth } from './ThemeProvider/theme';
 
-const Container = styled(Box)`
-  ${maxWidth}
-`;
+const Container = (props) => <Box {...props} />;
 
 Container.defaultProps = {
   mx: 'auto',

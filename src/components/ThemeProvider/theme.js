@@ -19,6 +19,9 @@ const font = 'Arial, "PingFang TC", "HeiTi TC", "Microsoft JhengHei", sans-serif
 
 const white = '#fff';
 const black = '#000';
+const primary = 'blue';
+const secondary = 'green';
+const danger = 'red';
 
 export default {
   colors: {
@@ -26,12 +29,15 @@ export default {
     white,
     black,
     text: black,
-    primary: flatternColors.blue,
-    danger: flatternColors.red,
-    primaryHover: colors.blue[9],
-    dangerHover: colors.red[9],
-    secondary: flatternColors.green,
-    secondaryHover: colors.green[9],
+    primary: flatternColors[primary],
+    primaryHover: colors[primary][9],
+    primaryVariations: colors[primary],
+    danger: flatternColors[danger],
+    dangerHover: colors[danger][9],
+    dangerVariations: colors[danger],
+    secondary: flatternColors[secondary],
+    secondaryHover: colors[secondary][9],
+    secondaryVariations: colors[secondary],
     variations: colors,
     fade: {
       white: generateFade(255, 255, 255),
