@@ -1,9 +1,10 @@
 {
   "name": "styled-gatsby-starter",
   "description": "Gatsby starter with styled-system",
-  "version": "1.0.7",
+  "version": "1.0.8",
   "author": "Renddi Yeh <renddi@relab.cc>",
   "dependencies": {
+    "@styled-system/theme-get": "^5.0.6",
     "babel-plugin-styled-components": "^1.10.0",
     "bowser": "^2.4.0",
     "browser-lang": "^0.0.1",
@@ -24,7 +25,7 @@
     "react-measure": "^2.2.6",
     "sanitize.css": "^8.0.0",
     "styled-components": "^4.2.0",
-    "styled-system": "^4.1.0"
+    "styled-system": "^5.0.6"
   },
   "keywords": [
     "gatsby",

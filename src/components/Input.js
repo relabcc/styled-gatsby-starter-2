@@ -1,10 +1,8 @@
 import React, { createElement } from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
-import {
-  themeGet,
-  textAlign,
-} from 'styled-system';
+import { textAlign } from 'styled-system';
+import themeGet from '@styled-system/theme-get';
 
 import Flex from './Flex';
 import Box from './Box';
