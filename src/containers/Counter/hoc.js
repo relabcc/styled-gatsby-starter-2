@@ -4,8 +4,10 @@ import { connect } from 'react-redux';
 import injectReducer from 'utils/injectReducer';
 import reducer, { increment, decrement } from './reducer';
 
+const key = 'counter'
+
 const mapStateToProps = (state) => ({
-  count: state.getIn(['counter', 'count']),
+  count: state.getIn([key, 'count']),
 });
 
 const mapDispatchToProps = (dispatch) => bindActionCreators({
@@ -13,7 +15,7 @@ const mapDispatchToProps = (dispatch) => bindActionCreators({
   decrement,
 }, dispatch);
 
-export const withReducer = injectReducer({ key: 'counter', reducer });
+export const withReducer = injectReducer({ key, reducer });
 
 export const withConnect = connect(mapStateToProps, mapDispatchToProps);
 
