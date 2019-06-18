@@ -2,15 +2,15 @@ import React, { PureComponent } from 'react'
 import connectedAuthWrapper from 'redux-auth-wrapper/connectedAuthWrapper';
 import { navigate } from 'gatsby';
 
-import { selectFirebaseState } from './selectors';
+import { selectFirebaseState, selectFirebase } from './selectors';
 import FullpageLoading from '../../components/FullpageLoading';
 import LanguageContext from '../../i18n/LanguageContext';
 
 class Redirect extends PureComponent {
   componentDidMount() {
-    const { to, logout, firebase, auth } = this.props
+    const { to, firebase, auth } = this.props
     const { locale } = this.context;
-    if (logout && auth.isLoaded && !auth.isEmpty) {
+    if (auth.isLoaded && !auth.isEmpty) {
       firebase.logout().then(() => navigate(`/${locale}${to}`))
     } else {
       navigate(`/${locale}${to}`);
@@ -23,6 +23,8 @@ class Redirect extends PureComponent {
 }
 
 Redirect.contextType = LanguageContext
+
+const FirebaseRedirect = selectFirebase(['auth'])(Redirect);
 
 const authenticatingSelector = (state) => {
   const { auth, profile, isInitializing } = selectFirebaseState(state);
@@ -37,7 +39,7 @@ export const UserIsAuthenticated = connectedAuthWrapper({
     return auth.isLoaded && !auth.isEmpty;
   },
   AuthenticatingComponent: FullpageLoading,
-  FailureComponent: () => <Redirect to="/admin/login" />
+  FailureComponent: () => <FirebaseRedirect to="/admin/login" />
 });
 
 export const UserIsNotAuthenticated = connectedAuthWrapper({
@@ -48,5 +50,5 @@ export const UserIsNotAuthenticated = connectedAuthWrapper({
     return auth.isLoaded && auth.isEmpty;
   },
   AuthenticatingComponent: FullpageLoading,
-  FailureComponent: () => <Redirect to="/admin" />
+  FailureComponent: () => <FirebaseRedirect to="/admin" />
 });
