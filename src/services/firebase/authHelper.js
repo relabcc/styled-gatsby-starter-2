@@ -10,7 +10,7 @@ class Redirect extends PureComponent {
   componentDidMount() {
     const { to, firebase, auth } = this.props
     const { locale } = this.context;
-    if (auth.isLoaded && !auth.isEmpty) {
+    if (auth && auth.isLoaded && !auth.isEmpty) {
       firebase.logout().then(() => navigate(`/${locale}${to}`))
     } else {
       navigate(`/${locale}${to}`);
@@ -28,27 +28,27 @@ const FirebaseRedirect = selectFirebase(['auth'])(Redirect);
 
 const authenticatingSelector = (state) => {
   const { auth, profile, isInitializing } = selectFirebaseState(state);
-  return !auth.isLoaded || !profile.isLoaded || isInitializing === true;
+  return isInitializing === true || !auth.isLoaded || !profile.isLoaded;
 };
 
 export const UserIsAuthenticated = connectedAuthWrapper({
   wrapperDisplayName: 'UserIsAuthenticated',
   authenticatingSelector,
   authenticatedSelector: (state) => {
-    const { auth } = selectFirebaseState(state);
-    return auth.isLoaded && !auth.isEmpty;
+    const { auth, profile } = selectFirebaseState(state);
+    return !auth.isEmpty && profile.valid;
   },
   AuthenticatingComponent: FullpageLoading,
-  FailureComponent: () => <FirebaseRedirect to="/admin/login" />
+  FailureComponent: () => <FirebaseRedirect to="/login" />
 });
 
 export const UserIsNotAuthenticated = connectedAuthWrapper({
-  wrapperDisplayName: 'UserIsAuthenticated',
+  wrapperDisplayName: 'UserIsNotAuthenticated',
   authenticatingSelector,
   authenticatedSelector: (state) => {
     const { auth } = selectFirebaseState(state);
-    return auth.isLoaded && auth.isEmpty;
+    return auth.isEmpty;
   },
   AuthenticatingComponent: FullpageLoading,
-  FailureComponent: () => <FirebaseRedirect to="/admin" />
+  FailureComponent: () => <Redirect to="/" />
 });
