@@ -39,7 +39,7 @@ export const UserIsAuthenticated = connectedAuthWrapper({
     return !auth.isEmpty && profile.valid;
   },
   AuthenticatingComponent: FullpageLoading,
-  FailureComponent: () => <FirebaseRedirect to="/login" />
+  FailureComponent: () => <FirebaseRedirect to="/admin/login" />
 });
 
 export const UserIsNotAuthenticated = connectedAuthWrapper({
