@@ -5,7 +5,6 @@ import { background } from 'styled-system';
 import Box from './Box';
 
 const BackgroundImage = styled(Box)`
-  position: relative;
   ${background}
   background-image: url(${({ src }) => src});
   background-repeat: no-repeat;
@@ -19,6 +18,7 @@ BackgroundImage.propTypes = {
 };
 
 BackgroundImage.defaultProps = {
+  position: 'relative',
   ratio: 1,
   backgroundSize: 'cover',
   backgroundPosition: '50% 50%',
