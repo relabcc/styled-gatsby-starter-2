@@ -1,47 +1,45 @@
 import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
-import Measure from 'react-measure';
+import { withContentRect } from 'react-measure';
 import isFunction from 'lodash/isFunction'
 
 import Box from './Box';
 
 class VerticalCenter extends PureComponent {
+  static getDerivedStateFromProps({ contentRect }, { containerRef }) {
+    if (containerRef) {
+      const shouldCenter = containerRef.getBoundingClientRect().height - contentRect.bounds.height > 5;
+      return {
+        shouldCenter
+      }
+    }
+    return {}
+  }
+
   state = {}
 
   componentDidMount() {
-    this.timer = setInterval(this.clearCount, 200)
-    this.count = 0;
+    this.props.measure()
   }
 
-  componentWillUnmount() {
-    clearInterval(this.timer)
+  componentDidUpdate(prevProps, prevState) {
+    const { shouldCenter } = this.state
+    if (shouldCenter !== prevState.shouldCenter) {
+      this.props.onAlignChange(shouldCenter)
+    }
   }
 
-  handleContainerRef = (ref) => {
-    this.containerRef = ref;
-  }
-
-  handleResize = (contentRect) => {
-    const { shouldCenter } = this.state;
-    const shouldCenterNow = typeof this.containerRef !== 'undefined'
-      && this.containerRef.getBoundingClientRect().height > contentRect.bounds.height;
-    this.count += 1;
-
-    this.setState({
-      shouldCenter: this.count > 4 ? shouldCenter : shouldCenterNow,
-    }, () => {
-      this.props.onAlignChange(this.state.shouldCenter)
-    });
-  }
-
-  clearCount = () => {
-    this.count = 0
+  handleContainerRef = (containerRef) => {
+    this.setState({ containerRef })
   }
 
   render() {
     const {
       children,
       onAlignChange,
+      measure,
+      measureRef,
+      contentRect,
       ...props
     } = this.props;
     const { shouldCenter } = this.state;
@@ -52,29 +50,21 @@ class VerticalCenter extends PureComponent {
         ref={this.handleContainerRef}
         {...props}
       >
-        <Measure
-          bounds
-          onResize={this.handleResize}
+        <Box
+          position={shouldCenter && 'absolute'}
+          top={shouldCenter ? '50%' : 0}
+          width={1}
+          transform={shouldCenter && 'translateY(-50%)'}
+          ref={measureRef}
         >
-          {({ measureRef }) => (
-            <Box
-              position={shouldCenter && 'absolute'}
-              top={shouldCenter ? '50%' : 0}
-              width={1}
-              transform={shouldCenter && 'translateY(-50%)'}
-              ref={measureRef}
-            >
-              {isFunction(children) ? children(shouldCenter) : children}
-            </Box>
-          )}
-        </Measure>
+          {isFunction(children) ? children(shouldCenter) : children}
+        </Box>
       </Box>
     );
   }
 }
 
 VerticalCenter.displayName = 'VerticalCenter';
-
 
 VerticalCenter.propTypes = {
   onAlignChange: PropTypes.func,
@@ -84,4 +74,4 @@ VerticalCenter.defaultProps = {
   onAlignChange: () => {}
 }
 
-export default VerticalCenter;
+export default withContentRect('bounds')(VerticalCenter);
