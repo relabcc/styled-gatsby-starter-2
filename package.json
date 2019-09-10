@@ -4,6 +4,7 @@
   "version": "1.0.8",
   "author": "Renddi Yeh <renddi@relab.cc>",
   "dependencies": {
+    "@react-hook/window-size": "^1.0.4",
     "@styled-system/theme-get": "^5.0.6",
     "babel-plugin-styled-components": "^1.10.0",
     "bowser": "^2.4.0",
@@ -24,8 +25,9 @@
     "react-helmet": "^5.2.0",
     "react-icons": "^3.2.2",
     "react-intl": "^2.8.0",
-    "react-measure": "^2.2.3",
+    "react-measure": "^2.2.6",
     "react-redux": "^7.0.2",
+    "react-sizeme": "^2.6.7",
     "redux": "^4.0.1",
     "redux-actions": "^2.6.5",
     "redux-immutable": "^4.0.0",

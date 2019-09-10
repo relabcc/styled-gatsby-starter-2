@@ -9,7 +9,7 @@ import Circle from 'components/Circle'
 import Text from 'components/Text'
 import BackgroundImage from 'components/BackgroundImage'
 import Button from 'components/Button'
-import VerticalCenter from 'components/VerticalCenter'
+import FullpageVerticalCenter from 'components/FullpageVerticalCenter'
 import { mobileOrDesktop } from 'components/ThemeProvider/theme';
 
 import Link from 'i18n/Link'
@@ -20,7 +20,7 @@ import messages from './messages'
 
 const IndexPage = () => (
   <Layout>
-    <VerticalCenter>
+    <FullpageVerticalCenter>
       <Container py={mobileOrDesktop(0, '2em')}>
         <Flex alignItems="center">
           <Text>
@@ -38,7 +38,7 @@ const IndexPage = () => (
           <Button m="0.5em" disabled><FormattedMessage {...messages.bad} /></Button>
         </Box>
       </Container>
-    </VerticalCenter>
+    </FullpageVerticalCenter>
   </Layout>
 )
 
