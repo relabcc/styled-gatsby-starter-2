@@ -11,9 +11,6 @@ const Fullpage = ({ noHeader, children, ...props }) => {
   const [dims, setDims] = useState({})
   const windowHeight = useWindowHeight(720)
   const cantFull = windowHeight > dims.height
-  console.log(dims.height, windowHeight + 1)
-  console.log(dims.height > windowHeight + 1)
-  console.log(cantFull)
 
   return (
     <Box
