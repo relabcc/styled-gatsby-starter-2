@@ -1,10 +1,25 @@
+/* eslint-disable global-require */
 import React, { Component } from 'react'
-import { IntlProvider, addLocaleData } from 'react-intl'
+import { IntlProvider } from 'react-intl'
 
 import LanguageContext from './LanguageContext'
-import { localeData } from './locales'
+import { localeDataKeys } from './locales'
 
-addLocaleData(localeData)
+if (Intl) {
+  if (!Intl.PluralRules) {
+    require('@formatjs/intl-pluralrules/polyfill');
+    localeDataKeys.forEach(k => {
+      require(`@formatjs/intl-pluralrules/dist/locale-data/${k}`);
+    })
+  }
+
+  if (!Intl.RelativeTimeFormat) {
+    require('@formatjs/intl-relativetimeformat/polyfill');
+    localeDataKeys.forEach(k => {
+      require(`@formatjs/intl-relativetimeformat/dist/locale-data/${k}`);
+    })
+  }
+}
 
 class LanguageProvider extends Component {
   constructor(props) {
