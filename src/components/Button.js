@@ -90,7 +90,7 @@ Button.defaultProps = {
   hoverBorder: 'primaryHover',
   px: '1.5em',
   py: '0.75em',
-  fontWeight: 'bold',
+  fontSize: '1em',
   iconSpacing: '0.25em',
   borderRadius: '0.25em',
   display: 'inline-block',
@@ -102,6 +102,7 @@ Button.displayName = 'Button';
 Button.danger = props => (
   <Button
     bg="danger"
+    border="2px solid"
     borderColor="danger"
     hoverBg="dangerHover"
     hoverBorder="dangerHover"
@@ -112,6 +113,7 @@ Button.danger = props => (
 Button.secondary = props => (
   <Button
     bg="secondary"
+    border="2px solid"
     borderColor="secondary"
     hoverBg="secondaryHover"
     hoverBorder="secondaryHover"
@@ -125,17 +127,6 @@ Button.outline = props => (
     borderColor="primary"
     bg="transparent"
     color="primary"
-    hoverColor="white"
-    {...props}
-  />
-);
-
-Button.outline.danger = props => (
-  <Button.danger
-    border="2px solid"
-    borderColor="danger"
-    bg="transparent"
-    color="danger"
     hoverColor="white"
     {...props}
   />
