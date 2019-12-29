@@ -1,29 +1,39 @@
+import React from 'react'
 import firebase from 'firebase/app';
-import 'firebase/database';
-import 'firebase/firestore'
-import 'firebase/auth'
 
-import { reactReduxFirebase } from 'react-redux-firebase'
-import { reduxFirestore } from 'redux-firestore'
-import { compose } from 'redux'
+import { ReactReduxFirebaseProvider } from 'react-redux-firebase'
+import { createFirestoreInstance } from 'redux-firestore'
 
+import DataProvider from './DataProvider'
 import config from './config.json';
 
 // react-redux-firebase config
 const rrfConfig = {
-  userProfile: 'users',
-  // useFirestoreForProfile: true // Firestore for Profile instead of Realtime DB
+  firebase,
+  config: {
+    userProfile: 'users',
+    useFirestoreForProfile: true, // Firestore for Profile instead of Realtime DB
+  },
+  createFirestoreInstance, // <- needed if using firestore
 }
 
 firebase.initializeApp(config)
-firebase.firestore()
+const firebaseInit = () => {
+  require('firebase/database')
+  require('firebase/firestore')
+  require('firebase/storage')
+  require('firebase/auth')
+  firebase.firestore()
+}
 
-const firebaseEnhancer = compose(
-  reduxFirestore(firebase),
-  reactReduxFirebase(firebase, rrfConfig)
-);
+const FirebaseProvider = ({ children, ...props }) => (
+  <ReactReduxFirebaseProvider {...props} {...rrfConfig}>
+    <DataProvider>{children}</DataProvider>
+  </ReactReduxFirebaseProvider>
+)
 
 export {
   firebase,
-  firebaseEnhancer,
+  firebaseInit,
+  FirebaseProvider,
 };

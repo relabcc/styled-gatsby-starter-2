@@ -8,6 +8,8 @@
 import React from 'react';
 import wrapWithProvider from './with-provider';
 import LanguageProvider from './src/i18n/LanguageProvider';
+import { firebaseInit } from './src/services/firebase'
 
+firebaseInit()
 export const wrapRootElement = wrapWithProvider;
 export const wrapPageElement = ({ element, props }) => <LanguageProvider {...props}>{element}</LanguageProvider>

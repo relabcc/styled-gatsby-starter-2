@@ -13,11 +13,6 @@ export default function configureStore(initialState = {}) {
     createResponsiveStoreEnhancer({ calculateInitialState: false }),
   ];
 
-  if (typeof window !== 'undefined') {
-    const { firebaseEnhancer } = require('../services/firebase');
-    enhancers.push(firebaseEnhancer)
-  }
-
   // If Redux DevTools Extension is installed use it, otherwise use Redux compose
   /* eslint-disable no-underscore-dangle */
   const composeEnhancers =

@@ -3,6 +3,7 @@ import { Provider } from 'react-redux';
 import { calculateResponsiveState } from 'redux-responsive'
 
 import ThemeProvider from './src/components/ThemeProvider';
+import { FirebaseProvider } from './src/services/firebase'
 import creatStore from './src/stores/createStore';
 
 const store = creatStore();
@@ -22,7 +23,9 @@ class InitialDispatch extends Component {
 export default ({ element }) => (
   <Provider store={store}>
     <InitialDispatch>
-      <ThemeProvider>{element}</ThemeProvider>
+      <FirebaseProvider dispatch={store.dispatch}>
+        <ThemeProvider>{element}</ThemeProvider>
+      </FirebaseProvider>
     </InitialDispatch>
   </Provider>
 )

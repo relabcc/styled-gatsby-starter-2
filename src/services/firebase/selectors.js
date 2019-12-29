@@ -8,11 +8,9 @@ import isFunction from 'lodash/isFunction';
 import pick from 'lodash/pick';
 import get from 'lodash/get';
 import set from 'lodash/set';
-import {
-  firebaseConnect,
-  firestoreConnect,
-  populate,
-} from 'react-redux-firebase';
+import { withFirebase } from 'react-redux-firebase';
+
+import { withFirebaseConnect, withFirestoreConnect } from './DataContext'
 
 export const selectFirebaseState = state => state.get('firebase');
 export const selectFirestoreState = state => state.get('firestore');
@@ -22,7 +20,7 @@ export const selectFirebase = keyList => {
     pick(firebase, keyList),
   );
   return compose(
-    firebaseConnect(),
+    withFirebase,
     connect(selector),
   );
 };
@@ -31,17 +29,13 @@ export const selectFirebaseData = keyList => {
   const selector = createSelector(selectFirebaseState, firebase =>
     keyList.reduce((selected, key) => {
       if (isObject(key)) {
-        const { path, populates, queryParams, storeAs } = key;
+        const { path, queryParams, storeAs } = key;
         if (path) {
           if (storeAs) {
             return Object.assign(selected, {
               [storeAs]: firebase.data[storeAs],
             });
           }
-          if (populates)
-            return Object.assign(selected, {
-              [path]: populate(firebase, path, populates),
-            });
           if (queryParams)
             return Object.assign(selected, { [path]: firebase.data[path] });
         }
@@ -54,12 +48,13 @@ export const selectFirebaseData = keyList => {
   );
 
   return compose(
-    firebaseConnect(keyList),
+    withFirebaseConnect(keyList),
     connect(selector),
   );
 };
 
-export const selectFirestore = keyList => {
+export const selectFirestore = (keyList, asArray) => {
+  const storeKey = asArray ? 'ordered' : 'data'
   const selector = createSelector(selectFirestoreState, firestore =>
     keyList.reduce((selected, key) => {
       if (isObject(key)) {
@@ -67,16 +62,16 @@ export const selectFirestore = keyList => {
           return set(
             selected,
             key.storeAs,
-            get(firestore, ['ordered', key.storeAs]),
+            get(firestore, [storeKey, key.storeAs]),
           );
         }
         return set(
           selected,
           key.collection,
-          get(firestore, ['ordered', key.collection]),
+          get(firestore, [storeKey, key.collection]),
         );
       }
-      return set(selected, key, get(firestore, ['ordered', ...key.split('/')]));
+      return set(selected, key, get(firestore, [storeKey, ...key.split('/')]));
     }, {}),
   );
 
@@ -91,7 +86,7 @@ export const selectFirestore = keyList => {
       }
       return key;
     });
-    return createElement(firestoreConnect(keyListWithAuth)(SubComp), props);
+    return createElement(withFirestoreConnect(keyListWithAuth)(SubComp), props);
   };
 
   return compose(

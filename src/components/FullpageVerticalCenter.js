@@ -1,19 +1,15 @@
 import React, { useState } from 'react';
 import sizeMe from 'react-sizeme'
-import { useWindowHeight } from '@react-hook/window-size'
+import { withWindowSize } from 'libreact/modules/WindowSizeSensor';
 
 import Box from './Box'
 import theme from './ThemeProvider/theme'
 
 const HeightAware = sizeMe({ monitorHeight: true, monitorWidth: false })(Box)
 
-const Fullpage = ({ noHeader, children, ...props }) => {
+const Fullpage = ({ noHeader, children, windowSize, ...props }) => {
   const [dims, setDims] = useState({})
-  const windowHeight = useWindowHeight(720)
-  const cantFull = windowHeight > dims.height
-  console.log(dims.height, windowHeight + 1)
-  console.log(dims.height > windowHeight + 1)
-  console.log(cantFull)
+  const cantFull = windowSize.height > dims.height
 
   return (
     <Box
@@ -38,4 +34,4 @@ const Fullpage = ({ noHeader, children, ...props }) => {
   );
 };
 
-export default Fullpage;
+export default withWindowSize(Fullpage);
