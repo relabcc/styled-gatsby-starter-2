@@ -8,6 +8,7 @@ import Language from './Language'
 
 const Header = ({ siteTitle, ...props }) => (
   <Flex
+    is="header"
     position="fixed"
     bg="primary"
     top={0}
