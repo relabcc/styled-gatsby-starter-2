@@ -27,7 +27,7 @@ const Layout = ({ children, noHeader, intl }) => (
       const title = messages.title ? intl.formatMessage(messages.title) : siteMetadata.title;
       const description = messages.description ? intl.formatMessage(messages.description) : siteMetadata.description;
       return (
-        <div>
+        <>
           <Helmet>
             <html lang={intl.locale} />
             <title>{title}</title>
@@ -44,10 +44,10 @@ const Layout = ({ children, noHeader, intl }) => (
             <meta property="og:image" content={`${siteMetadata.url}/fb.png`} />
           </Helmet>
           {!noHeader && <Header height={theme.headerHeight} siteTitle={title} />}
-          <Box pt={!noHeader && theme.headerHeight}>
+          <Box is="main" pt={!noHeader && theme.headerHeight}>
             {children}
           </Box>
-        </div>
+        </>
       );
     }}
   />
