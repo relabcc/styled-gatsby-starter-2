@@ -3,7 +3,7 @@ import React, { Component } from 'react'
 import { IntlProvider } from 'react-intl'
 
 import LanguageContext from './LanguageContext'
-// import { localeDataKeys } from './locales'
+import { defaultLocale } from './locales'
 
 // if (Intl) {
 //   if (!Intl.PluralRules) {
@@ -46,7 +46,7 @@ class LanguageProvider extends Component {
       <LanguageContext.Provider value={Object.assign({ changeLocale: this.handleChangeLocale }, this.state)}>
         <LanguageContext.Consumer>
           {language => {
-            const locale = language.locale || 'zh-Hant-TW'
+            const locale = language.locale || defaultLocale
             const messages = require(`./locales/${locale}.json`) // eslint-disable-line
             return (
               <IntlProvider locale={locale} messages={messages}>
