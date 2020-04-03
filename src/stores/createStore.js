@@ -4,13 +4,12 @@
 
 import { createStore, compose } from 'redux';
 import { fromJS } from 'immutable';
-import { createResponsiveStoreEnhancer } from 'redux-responsive';
 
 import createReducer from './reducers';
 
 export default function configureStore(initialState = {}) {
   const enhancers = [
-    createResponsiveStoreEnhancer({ calculateInitialState: false }),
+    // createResponsiveStoreEnhancer({ calculateInitialState: false }),
   ];
 
   // If Redux DevTools Extension is installed use it, otherwise use Redux compose

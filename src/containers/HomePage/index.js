@@ -38,7 +38,7 @@ const IndexPage = () => {
           <BackgroundImage my="2em" src="https://loremflickr.com/1920/1080" ratio={9 / 16} />
           <Box mx="-1em">
             <Button m="0.5em" is={Link} to="/about"><FormattedMessage {...messages.about} /></Button>
-            <Button.secondary m="0.5em" rightIcon={FaThumbsUp}><FormattedMessage {...messages.good} /></Button.secondary>
+            <Button.secondary m="0.5em" is={Link} to="/admin" leftIcon={FaLock}><FormattedMessage {...messages.admin} /></Button.secondary>
             <Button m="0.5em" disabled><FormattedMessage {...messages.bad} /></Button>
           </Box>
         </Container>
