@@ -1,20 +1,19 @@
 import React from 'react';
-import Wave from 'better-react-spinkit/dist/Wave';
+import { Audio } from 'svg-loaders-react'
 
 import Box from './Box';
 
 const Loading = (props) => (
   <Box {...props}>
-    <Wave
-      color="currentColor"
-      size={36}
-      gutterWidth={2}
+    <Audio
+      width="100%"
+      fill="currentColor"
     />
   </Box>
 );
 
 Loading.defaultProps = {
-  color: 'blue',
+  color: 'primary',
 };
 
 export default Loading;
