@@ -2,9 +2,7 @@ import React from 'react'
 import Box from 'components/Box';
 import Flex from 'components/Flex';
 import Text from 'components/Text';
-import Link from 'i18n/Link';
-
-import Language from './Language'
+import Link from 'components/Link';
 
 const Header = ({ siteTitle, ...props }) => (
   <Flex
@@ -24,9 +22,6 @@ const Header = ({ siteTitle, ...props }) => (
           {siteTitle}
         </Link>
       </Text.H1>
-    </Box>
-    <Box px="1em">
-      <Language />
     </Box>
   </Flex>
 )
