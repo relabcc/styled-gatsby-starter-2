@@ -8,7 +8,7 @@ import Language from './Language'
 
 const Header = ({ siteTitle, ...props }) => (
   <Flex
-    is="header"
+    as="header"
     position="fixed"
     bg="primary"
     top={0}
@@ -19,11 +19,11 @@ const Header = ({ siteTitle, ...props }) => (
     {...props}
   >
     <Box px="1em" flex={1}>
-      <Text.h1>
+      <Text.H1>
         <Link to="/" color="white">
           {siteTitle}
         </Link>
-      </Text.h1>
+      </Text.H1>
     </Box>
     <Box px="1em">
       <Language />

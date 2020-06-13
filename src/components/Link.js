@@ -9,10 +9,9 @@ import {
   letterSpacing,
   display,
 } from 'styled-system';
-import tag from 'clean-tag';
+import shouldForwardProp from '@styled-system/should-forward-prop'
 import { Link as GatsbyLink } from 'gatsby';
 
-import blacklist from './utils/blacklist';
 import { customColor } from './utils/getColor';
 
 const linkStyle = css`
@@ -32,15 +31,15 @@ const linkStyle = css`
   }
 `;
 
-const NomalLink = styled(tag)`
+const NomalLink = styled.a.withConfig({ shouldForwardProp })`
   ${linkStyle}
 `;
 
-const GatsbyStyledLink = styled(GatsbyLink)`
+const GatsbyStyledLink = styled(GatsbyLink).withConfig({ shouldForwardProp })`
   ${linkStyle}
 `;
 
-const Link = ({ to, button, blacklist, ...props }) => {
+const Link = ({ to, button, ...props }) => {
   if (to) {
     return (
       <GatsbyStyledLink to={to} {...props} />
@@ -48,9 +47,8 @@ const Link = ({ to, button, blacklist, ...props }) => {
   }
   return (
     <NomalLink
-      is="a"
+      as="a"
       target="_blank"
-      blacklist={blacklist}
       { ...props }
     />
   );
@@ -59,7 +57,6 @@ const Link = ({ to, button, blacklist, ...props }) => {
 Link.displayName = 'Link';
 
 Link.defaultProps = {
-  blacklist,
   fontWeight: 'bold',
 };
 

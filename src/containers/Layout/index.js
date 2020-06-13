@@ -44,7 +44,7 @@ const Layout = ({ children, noHeader, intl }) => (
             <meta property="og:image" content={`${siteMetadata.url}/fb.png`} />
           </Helmet>
           {!noHeader && <Header height={theme.headerHeight} siteTitle={title} />}
-          <Box is="main" pt={!noHeader && theme.headerHeight}>
+          <Box as="main" pt={!noHeader && theme.headerHeight}>
             {children}
           </Box>
         </>
