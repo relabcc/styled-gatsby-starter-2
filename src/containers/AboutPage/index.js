@@ -1,23 +1,21 @@
 import React from 'react';
-import { FormattedMessage } from 'react-intl';
 
 import Container from 'components/Container';
-import Link from 'i18n/Link';
+import Link from 'components/Link';
 
 import Layout from '../Layout'
-import messages from './messages';
 
 const AboutPage = () => (
   <Layout>
     <Container>
       <h1>
-        <FormattedMessage {...messages.header} />
+      這是關於頁
       </h1>
       <p>
-        <FormattedMessage {...messages.welcome} />
+      歡迎來到這一頁
       </p>
       <Link to="/">
-        <FormattedMessage {...messages.backHome} />
+      回到首頁
       </Link>
     </Container>
   </Layout>

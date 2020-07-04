@@ -1,6 +1,5 @@
 import React from 'react'
 import { FaThumbsUp } from 'react-icons/fa';
-import { FormattedMessage } from 'react-intl'
 
 import Container from 'components/Container'
 import Box from 'components/Box'
@@ -12,12 +11,12 @@ import Button from 'components/Button'
 import FullpageVerticalCenter from 'components/FullpageVerticalCenter'
 import { responsive } from 'components/ThemeProvider/theme';
 
-import Link from 'i18n/Link'
+import Link from 'components/Link'
+
 import useResponsive from 'contexts/mediaQuery/useResponsive'
 
 import Counter from '../Counter';
 import Layout from '../Layout';
-import messages from './messages'
 
 const IndexPage = () => {
   const { isMobile } = useResponsive()
@@ -27,7 +26,7 @@ const IndexPage = () => {
         <Container py={responsive(0, '2em')}>
           <Flex alignItems="center">
           <Text fontSize={responsive('1em', '1.5em')} color={responsive('red', 'green')}>
-              <FormattedMessage {...messages.header} />
+              Styled Components + Styled System 超方便！
               {isMobile && 'Mobile'}
             </Text>
             <Circle width="2em" bg="blue" color="white" display="inline-block" mx="1em" verticalAlign="middle">
@@ -38,9 +37,9 @@ const IndexPage = () => {
 
           <BackgroundImage my="2em" src="https://loremflickr.com/1920/1080" ratio={9 / 16} />
           <Box mx="-1em">
-            <Button m="0.5em" is={Link} to="/about"><FormattedMessage {...messages.about} /></Button>
-            <Button.secondary m="0.5em" rightIcon={FaThumbsUp}><FormattedMessage {...messages.good} /></Button.secondary>
-            <Button m="0.5em" disabled><FormattedMessage {...messages.bad} /></Button>
+            <Button m="0.5em" as={Link} to="/about">關於</Button>
+            <Button.Secondary m="0.5em" rightIcon={FaThumbsUp}>範例Button</Button.Secondary>
+            <Button m="0.5em" disabled>不可點</Button>
           </Box>
         </Container>
       </FullpageVerticalCenter>

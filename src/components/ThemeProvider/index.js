@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Fragment } from 'react';
 import { ThemeProvider } from 'styled-components';
 import 'sanitize.css';
 
@@ -8,9 +8,9 @@ import theme from './theme';
 
 export default ({ children }) => (
   <ThemeProvider theme={theme}>
-    <>
+    <Fragment>
       {children}
       <GlobalStyles />
-    </>
+    </Fragment>
   </ThemeProvider>
 );

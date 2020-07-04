@@ -2,15 +2,13 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import Helmet from 'react-helmet'
 import { StaticQuery, graphql, withPrefix } from 'gatsby'
-import { injectIntl } from 'react-intl'
 
 import Box from 'components/Box';
 import theme from 'components/ThemeProvider/theme';
 
 import Header from '../Header'
-import messages from './messages'
 
-const Layout = ({ children, noHeader, intl }) => (
+const Layout = ({ children, noHeader }) => (
   <StaticQuery
     query={graphql`
       query SiteTitleQuery {
@@ -23,13 +21,11 @@ const Layout = ({ children, noHeader, intl }) => (
         }
       }
     `}
-    render={({ site: { siteMetadata } }) => {
-      const title = messages.title ? intl.formatMessage(messages.title) : siteMetadata.title;
-      const description = messages.description ? intl.formatMessage(messages.description) : siteMetadata.description;
+    render={({ site: { siteMetadata: { title, description, url } } }) => {
       return (
         <>
           <Helmet>
-            <html lang={intl.locale} />
+            <html lang="zh-Hant-TW" />
             <title>{title}</title>
             <meta name="description" content={description} />
             <link rel="apple-touch-icon" sizes="180x180" href={withPrefix('/apple-touch-icon.png')} />
@@ -38,13 +34,13 @@ const Layout = ({ children, noHeader, intl }) => (
             <link rel="mask-icon" color="#5bbad" href={withPrefix('/safari-pinned-tab.svg')} />
             <meta name="msapplication-TileColor" content="#da532c" />
             <meta name="theme-color" content="#ffffff" />
-            <meta property="og:url" content={siteMetadata.url} />
+            <meta property="og:url" content={url} />
             <meta property="og:title" content={title} />
             <meta property="og:description" content={description} />
-            <meta property="og:image" content={`${siteMetadata.url}/fb.png`} />
+            <meta property="og:image" content={`${url}/fb.png`} />
           </Helmet>
           {!noHeader && <Header height={theme.headerHeight} siteTitle={title} />}
-          <Box is="main" pt={!noHeader && theme.headerHeight}>
+          <Box as="main" pt={!noHeader && theme.headerHeight}>
             {children}
           </Box>
         </>
@@ -57,4 +53,4 @@ Layout.propTypes = {
   children: PropTypes.node.isRequired,
 }
 
-export default injectIntl(Layout)
+export default Layout

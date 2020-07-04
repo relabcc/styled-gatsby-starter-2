@@ -2,13 +2,11 @@ import React from 'react'
 import Box from 'components/Box';
 import Flex from 'components/Flex';
 import Text from 'components/Text';
-import Link from 'i18n/Link';
-
-import Language from './Language'
+import Link from 'components/Link';
 
 const Header = ({ siteTitle, ...props }) => (
   <Flex
-    is="header"
+    as="header"
     position="fixed"
     bg="primary"
     top={0}
@@ -19,14 +17,11 @@ const Header = ({ siteTitle, ...props }) => (
     {...props}
   >
     <Box px="1em" flex={1}>
-      <Text.h1>
+      <Text.H1>
         <Link to="/" color="white">
           {siteTitle}
         </Link>
-      </Text.h1>
-    </Box>
-    <Box px="1em">
-      <Language />
+      </Text.H1>
     </Box>
   </Flex>
 )

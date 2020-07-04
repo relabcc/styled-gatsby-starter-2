@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-import tag from 'clean-tag';
+import shouldForwardProp from '@styled-system/should-forward-prop'
 import {
   space,
   layout,
@@ -15,10 +15,10 @@ import {
   style,
 } from 'styled-system';
 
-import blacklist from './utils/blacklist';
 import injectProps from './utils/injectProps';
+import isToAs from './utils/isToAs'
 
-const Box = styled(tag)`
+const Box = isToAs(styled.div.withConfig({ shouldForwardProp })`
   ${space}
   ${layout}
   ${position}
@@ -40,14 +40,13 @@ const Box = styled(tag)`
     key: 'zOrder',
   })}
   ${({ onClick }) => onClick && 'cursor: pointer;'}
-`;
-
-Box.defaultProps = {
-  blacklist,
-};
+`);
 
 Box.displayName = 'Box';
 
-Box.inline = (props) => <Box is="span" display="inline-block" verticalAlign="middle" {...props} />;
+Box.Inline = (props) => <Box as="span" display="inline-block" verticalAlign="middle" {...props} />;
+Box.Absolute = (props) => <Box position="absolute" {...props} />;
+Box.FullAbsolute = (props) => <Box.Absolute top="0" left="0" right="0" bottom="0" {...props} />;
+Box.Relative = (props) => <Box position="relative" {...props} />;
 
 export default Box;
