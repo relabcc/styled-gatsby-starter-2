@@ -11,13 +11,11 @@ import Text from './Text';
 const TextInput = styled.input`
   font-family: inherit;
   width: 100%;
-  padding: 0;
-  border: none;
-  border-bottom: 1px solid ${themeGet('colors.gray')};
-  line-height: 1;
+  padding: 0.25em;
+  border: 1px solid ${themeGet('colors.gray')};
   border-radius: 0;
   font-weight: bold;
-  font-size: 1.5em;
+  font-size: 1.25em;
   ${textAlign}
   &::placeholder {
     color: ${themeGet('colors.gray')};
@@ -41,7 +39,7 @@ const Input = ({
   step,
   ...props
 }) => (
-  <Flex as="label" {...props}>
+  <Flex is="label" {...props}>
     {label && (
       <Box mr="1em" w={labelWidth}>
         <Text fontWeight="bold">{label}</Text>

@@ -38,7 +38,7 @@ Circle.propTypes = {
   border: PropTypes.string,
   borderColor: PropTypes.string,
   bg: PropTypes.string,
-  is: PropTypes.oneOfType([
+  as: PropTypes.oneOfType([
     PropTypes.string,
     PropTypes.func,
   ]),
