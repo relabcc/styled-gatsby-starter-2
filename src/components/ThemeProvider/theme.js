@@ -1,28 +1,37 @@
-import merge from 'lodash/merge';
-import range from 'lodash/range';
-import get from 'lodash/get';
-import mapValues from 'lodash/mapValues';
+import { theme, extendTheme } from "@chakra-ui/react";
+import { createBreakpoints } from "@chakra-ui/theme-tools"
+import memoizeOne from 'memoize-one';
+import { createMedia } from "@artsy/fresnel"
+import { isArray, isNil, get } from "lodash";
 
-import colors from 'open-color/open-color.json';
+export const breakpoints = createBreakpoints({
+  sm: "30em",
+  md: "48em",
+  lg: "62em",
+  xl: "80em",
+})
 
-import memorize from '../../utils/memorize'
+const AppMedia = createMedia({ breakpoints })
+export const mediaStyle = AppMedia.createMediaStyle()
+export const { Media, MediaContextProvider } = AppMedia
 
-const baseFontSize = 16
-const emToPx = (em) => `${em * baseFontSize}px`;
-
-export const breakpoints = [22, 36, 48, 62, 90, 120].map(emToPx);
-export const containerWidth = [22, 36, 46, 58].map(emToPx);
 export const responsiveIndex = [
-  [3, 'mobile'],
-  [4, 'tablet'],
+  [2, 'mobile'],
+  [3, 'tablet'],
 ]
 
+const handleCalc = (syn, a) => isNil(a) ? null : [syn[0], a, syn[1]].join('')
+
+export const responsiveCalc = memoizeOne((syn, resArr) => {
+  return isArray(resArr) ? resArr.map(a => handleCalc(syn, a)) : handleCalc(syn, resArr)
+})
+
 const responsiveMap = breakpoints.map((_, i) => {
-  const id = responsiveIndex.findIndex(([ri]) => ri > i)
+  const id = responsiveIndex.findIndex(([ri]) => ri + 1 > i)
   return id >= 0 ? id : responsiveIndex.length
 })
 
-export const responsive = memorize((...args) => {
+export const responsive = memoizeOne((...args) => {
   const argsLen = args.length
   if (argsLen <= 1) return args[0]
   return breakpoints.map((_, i) => get(args, [responsiveMap[i]], null))
@@ -30,45 +39,34 @@ export const responsive = memorize((...args) => {
 
 export const mobileOrDesktop = responsive
 
-const generateFade = (r, g, b) => range(10, 100, 10)
-  .reduce((fade, opacity) => merge(fade, { [opacity]: `rgba(${[r, g, b, opacity / 100].join()})` }), {});
-
-const flatternColors = mapValues(colors, (listOfColors) => listOfColors[5]);
+export const containerWidth = ["26em", "44em", "58em", "76em"];
+export const containerPadding = responsive('1em', '2em')
 
 const font = 'Arial, "PingFang TC", "HeiTi TC", "Microsoft JhengHei", sans-serif';
+const fonts = {
+  heading: font,
+  body: font,
+  mono: "Menlo, monospace",
+}
 
-const white = '#fff';
-const black = '#000';
-const primary = 'blue';
-const secondary = 'green';
-const danger = 'red';
+const primary = 'blue'
+const secondary = 'green'
+const danger = 'red'
 
-export default {
+const overrides = {
+  fonts,
   colors: {
-    ...flatternColors,
-    white,
-    black,
-    text: black,
-    primary: flatternColors[primary],
-    primaryHover: colors[primary][9],
-    primaryVariations: colors[primary],
-    danger: flatternColors[danger],
-    dangerHover: colors[danger][9],
-    dangerVariations: colors[danger],
-    secondary: flatternColors[secondary],
-    secondaryHover: colors[secondary][9],
-    secondaryVariations: colors[secondary],
-    variations: colors,
-    fade: {
-      white: generateFade(255, 255, 255),
-      black: generateFade(0, 0, 0),
-    },
+    ...theme.colors,
+    primary: get(theme.colors, `${primary}.500`),
+    secondary: get(theme.colors, `${secondary}.500`),
+    danger: get(theme.colors, `${danger}.500`),
+    text: get(theme.colors, 'black'),
   },
   breakpoints,
   containerWidth,
-  font,
-  fontSize: `${baseFontSize}px`,
   headerHeight: '5em',
-  responsive,
-  zOrder: range(4).map((i) => 10 ** i),
-};
+}
+
+const customTheme = extendTheme(overrides)
+
+export default customTheme

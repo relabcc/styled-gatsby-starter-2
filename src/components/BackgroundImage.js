@@ -1,30 +1,47 @@
-import PropTypes from 'prop-types';
-import styled from 'styled-components';
-import { background } from 'styled-system';
+import React, { forwardRef } from 'react';
+import { isArray } from 'lodash'
+import { AspectRatio } from '@chakra-ui/react';
 
-import Box from './Box';
-import asForward from './utils/asForward'
+import Box from './Box'
+import useWebpImage from './utils/useWebpImage';
 
-const BackgroundImage = styled(Box)`
-  ${background}
-  background-image: url(${({ src }) => src});
-  background-repeat: no-repeat;
-  ${(props) => props.height ? '' : `padding-top: ${props.ratio * 100}%;`}
-`;
+const BGImage = ({ src, children, ...props }) => {
+  const pic = useWebpImage(src)
 
-BackgroundImage.propTypes = {
-  src: PropTypes.string,
-  backgroundSize: PropTypes.string,
-  backgroundPosition: PropTypes.string,
-};
+  return (
+    <Box
+      backgroundImage={`url(${isArray(src) ? pic : src})`}
+      {...props}
+    >
+      {children && (
+        <Box.FullAbs>{children}</Box.FullAbs>
+      )}
+    </Box>
+  )
+}
 
-BackgroundImage.defaultProps = {
-  position: 'relative',
-  ratio: 1,
+BGImage.defaultProps = {
   backgroundSize: 'cover',
   backgroundPosition: '50% 50%',
+  backgroundRepet: 'no-repeat',
 };
+
+const BackgroundImage = forwardRef(({
+  src,
+  children,
+  backgroundSize,
+  backgroundPosition,
+  ...props
+}, ref) => (
+  <AspectRatio {...props} ref={ref}>
+    <BGImage
+      src={src}
+      backgroundSize={backgroundSize}
+      backgroundPosition={backgroundPosition}
+    >{children}</BGImage>
+  </AspectRatio>
+));
 
 BackgroundImage.displayName = 'BackgroundImage';
 
-export default asForward(BackgroundImage);
+export default BackgroundImage

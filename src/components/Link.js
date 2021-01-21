@@ -1,63 +1,12 @@
-import React from 'react';
-import styled, { css } from 'styled-components';
-import {
-  fontSize,
-  fontWeight,
-  lineHeight,
-  space,
-  color,
-  letterSpacing,
-  display,
-} from 'styled-system';
-import shouldForwardProp from '@styled-system/should-forward-prop'
-import { Link as GatsbyLink } from 'gatsby';
+import React, { forwardRef } from 'react';
+import { Link as RouterLink } from 'gatsby'
+import { Link } from "@chakra-ui/react";
 
-import { customColor } from './utils/getColor';
-
-const linkStyle = css`
-  ${fontSize}
-  ${space}
-  ${color}
-  ${fontWeight}
-  ${lineHeight}
-  ${letterSpacing}
-  ${display}
-  text-decoration: none;
-  ${({ disabled }) => disabled && `
-    pointer-events: none;
-  `}
-  &:hover {
-    ${customColor('hoverColor')};
-  }
-`;
-
-const NomalLink = styled.a.withConfig({ shouldForwardProp })`
-  ${linkStyle}
-`;
-
-const GatsbyStyledLink = styled(GatsbyLink).withConfig({ shouldForwardProp })`
-  ${linkStyle}
-`;
-
-const Link = ({ to, button, ...props }) => {
+const ReLink = forwardRef(({ to, ...props }, ref) => {
   if (to) {
-    return (
-      <GatsbyStyledLink to={to} {...props} />
-    );
+    return <Link as={p => <RouterLink to={to} {...p} />} ref={ref} {...props} />
   }
-  return (
-    <NomalLink
-      as="a"
-      target="_blank"
-      { ...props }
-    />
-  );
-};
+  return <Link target="_blank" ref={ref} {...props} />
+})
 
-Link.displayName = 'Link';
-
-Link.defaultProps = {
-  fontWeight: 'bold',
-};
-
-export default Link;
+export default ReLink

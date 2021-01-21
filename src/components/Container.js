@@ -1,14 +1,13 @@
-import React from 'react';
+import styled from '@emotion/styled';
 
 import Box from './Box';
-import { containerWidth } from './ThemeProvider/theme';
+import { containerWidth, containerPadding } from './ThemeProvider/theme';
 
-const Container = (props) => <Box {...props} />;
+const Container = styled(Box)``
 
 Container.defaultProps = {
   mx: 'auto',
-  px: ['1em', null, '2em'],
-  width: 1,
+  px: containerPadding,
   maxWidth: containerWidth,
 };
 
