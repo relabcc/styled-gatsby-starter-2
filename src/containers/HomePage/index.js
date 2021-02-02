@@ -22,7 +22,7 @@ const IndexPage = () => {
           <Flex alignItems="center">
           <Text fontSize={responsive('1em', '1.5em')} color={responsive('red', 'green')}>
               Styled Components + Styled System 超方便！
-              <Media lessThan="md">
+              <Media lessThan="tablet">
                 Mobile
               </Media>
             </Text>

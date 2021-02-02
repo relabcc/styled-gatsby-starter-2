@@ -1,34 +1,45 @@
 import { theme, extendTheme } from "@chakra-ui/react";
-import { createBreakpoints } from "@chakra-ui/theme-tools"
 import memoizeOne from 'memoize-one';
 import { createMedia } from "@artsy/fresnel"
 import { isArray, isNil, get } from "lodash";
 
-export const breakpoints = createBreakpoints({
-  sm: "30em",
-  md: "48em",
-  lg: "62em",
-  xl: "80em",
-})
+const breakpoints = [0, 30, 48, 62, 80].map(em => em * 16);
 
-const AppMedia = createMedia({ breakpoints })
-export const mediaStyle = AppMedia.createMediaStyle()
-export const { Media, MediaContextProvider } = AppMedia
+const chakraBpNames = ['sm', 'md', 'lg', 'xl']
+const chakraBps = chakraBpNames.reduce((bps, name, i) => {
+  bps[name] = `${breakpoints[i + 1]}px`
+  return bps
+}, {})
 
 export const responsiveIndex = [
-  [2, 'mobile'],
-  [3, 'tablet'],
+  [1, 'mobile'],
+  [2, 'tablet'],
+  [3, 'desktop'],
 ]
+
+let hasZero
+const mediaBreak = responsiveIndex.reduce((obj, [i, name]) => {
+  obj[name] = breakpoints[i]
+  if (i === 0) hasZero = true
+  return obj
+}, {})
+if (!hasZero) {
+  mediaBreak.base = 0
+}
+
+const responsiveMap = breakpoints.map((_, i) => {
+  const id = responsiveIndex.findIndex(([ri]) => ri + 1 > i)
+  return id >= 0 ? id : responsiveIndex.length
+})
+
+const AppMedia = createMedia({ breakpoints: mediaBreak })
+export const mediaStyle = AppMedia.createMediaStyle()
+export const { Media, MediaContextProvider } = AppMedia
 
 const handleCalc = (syn, a) => isNil(a) ? null : [syn[0], a, syn[1]].join('')
 
 export const responsiveCalc = memoizeOne((syn, resArr) => {
   return isArray(resArr) ? resArr.map(a => handleCalc(syn, a)) : handleCalc(syn, resArr)
-})
-
-const responsiveMap = breakpoints.map((_, i) => {
-  const id = responsiveIndex.findIndex(([ri]) => ri + 1 > i)
-  return id >= 0 ? id : responsiveIndex.length
 })
 
 export const responsive = memoizeOne((...args) => {
@@ -62,7 +73,7 @@ const overrides = {
     danger: get(theme.colors, `${danger}.500`),
     text: get(theme.colors, 'black'),
   },
-  breakpoints,
+  breakpoints: chakraBps,
   containerWidth,
   headerHeight: '5em',
 }
