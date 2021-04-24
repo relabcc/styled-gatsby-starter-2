@@ -3,7 +3,7 @@ import memoizeOne from 'memoize-one';
 import { createMedia } from "@artsy/fresnel"
 import { isArray, isNil, get } from "lodash";
 
-const breakpoints = [0, 30, 48, 62, 80].map(em => em * 16);
+const breakpoints = [0, 24, 48, 80, 105].map(em => em * 16);
 
 const chakraBpNames = ['sm', 'md', 'lg', 'xl']
 const chakraBps = chakraBpNames.reduce((bps, name, i) => {
@@ -12,20 +12,17 @@ const chakraBps = chakraBpNames.reduce((bps, name, i) => {
 }, {})
 
 export const responsiveIndex = [
-  [1, 'mobile'],
-  [2, 'tablet'],
-  [3, 'desktop'],
+  // [1, 'mini-mobile'],
+  [2, 'mobile'],
+  [3, 'tablet'],
+  [4, 'laptop'],
+  [5, 'desktop'],
 ]
 
-let hasZero
-const mediaBreak = responsiveIndex.reduce((obj, [i, name]) => {
-  obj[name] = breakpoints[i]
-  if (i === 0) hasZero = true
+const mediaBreak = responsiveIndex.reduce((obj, [i, name], j) => {
+  obj[name] = j ? breakpoints[i - 1] : 0
   return obj
 }, {})
-if (!hasZero) {
-  mediaBreak.base = 0
-}
 
 const responsiveMap = breakpoints.map((_, i) => {
   const id = responsiveIndex.findIndex(([ri]) => ri + 1 > i)

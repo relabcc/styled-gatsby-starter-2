@@ -8,3 +8,9 @@
 import wrapWithProvider from './with-provider';
 
 export const wrapRootElement = wrapWithProvider;
+
+(async () => {
+  if (!window.ResizeObserver) {
+    window.ResizeObserver = (await import('resize-observer-polyfill')).default;
+  }
+})()

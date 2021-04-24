@@ -1,4 +1,5 @@
 import { css } from '@emotion/react'
+import { mediaStyle } from './theme'
 
 export default css`
   body {
@@ -9,4 +10,6 @@ export default css`
   img {
     width: 100%;
   }
+
+  ${mediaStyle}
 `;
