@@ -1,28 +1,25 @@
-import React, { useState, useMemo } from 'react';
-import sizeMe from 'react-sizeme'
-import { withWindowSize } from 'libreact/modules/WindowSizeSensor';
+import React, { forwardRef, useContext } from 'react';
+import { useWindowSize } from 'react-use';
 
 import Box from './Box'
-import theme from './ThemeProvider/theme'
+import theme, { responsiveCalc } from './ThemeProvider/theme'
+import headerContext from '../contexts/header/context'
 
-const HeightAware = sizeMe({ monitorHeight: true, monitorWidth: false })(Box)
-
-const Fullpage = ({ noHeader, children, windowSize, ...props }) => {
-  const [dims, setDims] = useState({})
-  const canFull = windowSize.height > dims.height
-
-  return useMemo(() => (
+const Fullpage = forwardRef(({ children, ...props }, ref) => {
+  const { hideHeader } = useContext(headerContext)
+  const windowSize = useWindowSize()
+  return (
     <Box
-      height={canFull ? '100vh' : 'auto'}
-      mt={!noHeader && `-${theme.headerHeight}`}
-      pt={!noHeader && theme.headerHeight}
+      height={`${windowSize.height}px`}
+      mt={!hideHeader && (!props.position || props.position === 'relative') && responsiveCalc`-${theme.headerHeight}`}
+      pt={!hideHeader && theme.headerHeight}
+      top={!hideHeader && props.position === 'fixed' && theme.headerHeight}
+      ref={ref}
       {...props}
     >
-      <HeightAware onSize={setDims} height={canFull ? '100%' : 'auto'}>
-        {children}
-      </HeightAware>
+      {children}
     </Box>
-  ), [canFull, noHeader, children, props]);
-};
+  )
+});
 
-export default withWindowSize(Fullpage);
+export default Fullpage;

@@ -1,16 +1,20 @@
-import React, { Fragment } from 'react';
-import { ThemeProvider } from 'styled-components';
-import 'sanitize.css';
+import React from 'react';
+import { Global } from '@emotion/react'
+import { ChakraProvider } from "@chakra-ui/react"
 
-import GlobalStyles from './global-styles';
+import globalStyles from './global-styles';
 
-import theme from './theme';
+import theme, { MediaContextProvider } from './theme';
 
-export default ({ children }) => (
-  <ThemeProvider theme={theme}>
-    <Fragment>
-      {children}
-      <GlobalStyles />
-    </Fragment>
-  </ThemeProvider>
+const ReThemeProvider = ({ children }) => (
+  <ChakraProvider theme={theme} resetCSS>
+    <MediaContextProvider>
+      <>
+        <Global styles={globalStyles} />
+        {children}
+      </>
+    </MediaContextProvider>
+  </ChakraProvider>
 );
+
+export default ReThemeProvider

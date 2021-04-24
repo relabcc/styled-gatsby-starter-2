@@ -13,7 +13,7 @@ const Header = ({ siteTitle, ...props }) => (
     left={0}
     right={0}
     alignItems="center"
-    zOrder={2}
+    zIndex="docked"
     {...props}
   >
     <Box px="1em" flex={1}>
