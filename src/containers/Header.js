@@ -1,8 +1,8 @@
 import React from 'react'
-import Box from 'components/Box';
-import Flex from 'components/Flex';
-import Text from 'components/Text';
-import Link from 'components/Link';
+import Box from '../components/Box';
+import Flex from '../components/Flex';
+import Text from '../components/Text';
+import Link from '../components/Link';
 
 const Header = ({ siteTitle, ...props }) => (
   <Flex

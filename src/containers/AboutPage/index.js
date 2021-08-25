@@ -1,7 +1,7 @@
 import React from 'react';
 
-import Container from 'components/Container';
-import Link from 'components/Link';
+import Container from '../../components/Container';
+import Link from '../../components/Link';
 
 import Layout from '../Layout'
 

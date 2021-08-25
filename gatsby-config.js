@@ -9,7 +9,7 @@ module.exports = {
   },
   plugins: [
     'gatsby-plugin-react-helmet',
-    // 'gatsby-plugin-chakra-ui',
+    'gatsby-plugin-emotion',
     {
       resolve: 'gatsby-plugin-manifest',
       options: {
@@ -23,6 +23,23 @@ module.exports = {
       },
     },
     'gatsby-plugin-offline',
+    {
+      resolve: `gatsby-source-filesystem`,
+      options: {
+        name: `images`,
+        path: './src/images',
+      },
+    },
+    {
+      resolve: `gatsby-plugin-sharp`,
+      options: {
+        defaults: {
+          placeholder: `blurred`,
+        }
+      }
+    },
+    `gatsby-transformer-sharp`,
+    `gatsby-plugin-image`,
   ],
   pathPrefix,
 }
