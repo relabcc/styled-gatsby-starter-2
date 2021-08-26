@@ -1,4 +1,6 @@
 import { css } from '@emotion/react'
+import "focus-visible/dist/focus-visible"
+
 import { mediaStyle } from './theme'
 
 export default css`
