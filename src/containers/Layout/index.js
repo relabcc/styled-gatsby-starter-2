@@ -19,12 +19,12 @@ const Layout = ({ children, ...props }) => {
             siteMetadata {
               title
               description
-              url
+              siteUrl
             }
           }
         }
       `}
-      render={({ site: { siteMetadata: { title, description, url } } }) => {
+      render={({ site: { siteMetadata: { title, description, siteUrl } } }) => {
         return (
           <>
             <Helmet>
@@ -37,10 +37,10 @@ const Layout = ({ children, ...props }) => {
               <link rel="mask-icon" color="#5bbad" href={withPrefix('/safari-pinned-tab.svg')} />
               <meta name="msapplication-TileColor" content="#da532c" />
               <meta name="theme-color" content="#ffffff" />
-              <meta property="og:url" content={url} />
+              <meta property="og:url" content={siteUrl} />
               <meta property="og:title" content={title} />
               <meta property="og:description" content={description} />
-              <meta property="og:image" content={`${url}/fb.png`} />
+              <meta property="og:image" content={`${siteUrl}/fb.png`} />
             </Helmet>
             {!hideHeader && <Header height={headerHeight} siteTitle={title} />}
             <Box as="main" pt={!hideHeader && headerHeight}>

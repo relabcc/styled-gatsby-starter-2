@@ -1,3 +1,5 @@
+import { Button } from '@chakra-ui/button';
+import { Stack } from '@chakra-ui/layout';
 import React from 'react';
 
 import Container from '../../components/Container';
@@ -7,16 +9,18 @@ import Layout from '../Layout'
 
 const AboutPage = () => (
   <Layout>
-    <Container>
+    <Container as={Stack}>
       <h1>
       這是關於頁
       </h1>
       <p>
       歡迎來到這一頁
       </p>
-      <Link to="/">
-      回到首頁
-      </Link>
+      <div>
+        <Button as={Link} to="/">
+        回到首頁
+        </Button>
+      </div>
     </Container>
   </Layout>
 );

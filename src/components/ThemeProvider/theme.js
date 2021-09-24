@@ -16,7 +16,7 @@ export const responsiveIndex = [
   [2, 'mobile'],
   [3, 'tablet'],
   [4, 'laptop'],
-  [6, 'desktop'],
+  [5, 'desktop'],
 ]
 
 const mediaBreak = responsiveIndex.reduce((obj, [i, name], j) => {
@@ -25,7 +25,7 @@ const mediaBreak = responsiveIndex.reduce((obj, [i, name], j) => {
 }, {})
 
 const responsiveMap = breakpoints.map((_, i) => {
-  const id = responsiveIndex.findIndex(([ri]) => ri + 1 > i)
+  const id = responsiveIndex.findIndex(([ri]) => ri > i)
   return id >= 0 ? id : responsiveIndex.length
 })
 
@@ -47,7 +47,7 @@ export const responsive = (...args) => {
 
 export const mobileOrDesktop = responsive
 
-export const containerWidth = ["26em", "44em", "58em", "76em"];
+export const containerWidth = responsive("26em", "44em", "58em", "76em");
 export const containerPadding = responsive('1em', '2em')
 
 const font = 'Arial, "PingFang TC", "HeiTi TC", "Microsoft JhengHei", sans-serif';
@@ -71,6 +71,13 @@ const overrides = {
     text: get(theme.colors, 'black'),
   },
   breakpoints: createBreakpoints(chakraBps),
+  components: {
+    Button: {
+      defaultProps: {
+        colorScheme: 'blue',
+      },
+    },
+  },
 }
 
 const customTheme = extendTheme(overrides)
