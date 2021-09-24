@@ -27,39 +27,39 @@ workbox.core.clientsClaim();
  */
 self.__precacheManifest = [
   {
-    "url": "webpack-runtime-a9ee0874d55f1a063561.js"
+    "url": "webpack-runtime-49f45424317a58191cee.js"
   },
   {
-    "url": "framework-aa65aa58bcad261efb3a.js"
+    "url": "framework-b7b329f6c546dc3fb19a.js"
   },
   {
-    "url": "app-bb7f7f50d1e7363facff.js"
+    "url": "app-58404a50e0ce809e4573.js"
   },
   {
     "url": "offline-plugin-app-shell-fallback/index.html",
-    "revision": "89202627ebcbaa2be3747064fa2123dc"
+    "revision": "c4e2bde112d89b7274a3213f63e2bbfc"
   },
   {
-    "url": "component---cache-caches-gatsby-plugin-offline-app-shell-js-8ed8c256813a20363a18.js"
+    "url": "component---cache-caches-gatsby-plugin-offline-app-shell-js-2bce2f00536657b18fe9.js"
   },
   {
     "url": "page-data/offline-plugin-app-shell-fallback/page-data.json",
-    "revision": "97a4b5853a87f641d488650a26502465"
+    "revision": "db9b33d425d858681b696fecbfd17777"
   },
   {
-    "url": "page-data/sq/d/3453313390.json",
-    "revision": "0ae84b2408511b40bfcb14935da89542"
+    "url": "page-data/sq/d/2992646504.json",
+    "revision": "16116a7ab30dede51e61f04891501070"
   },
   {
     "url": "page-data/app-data.json",
-    "revision": "a04bb2eb11d0f6d2ab5cf7c3c759b91e"
+    "revision": "3d5cccf6f8d7e97767e1ca09fb55ff0a"
   },
   {
-    "url": "polyfill-de646daf27331b9b036e.js"
+    "url": "polyfill-f7b9e01743af7bf00dda.js"
   },
   {
     "url": "manifest.webmanifest",
-    "revision": "2532d3401bfd938bdc5935538d03e22b"
+    "revision": "4d91e44e51f4c99dd9b8e5237e6c3465"
   }
 ].concat(self.__precacheManifest || []);
 workbox.precaching.precacheAndRoute(self.__precacheManifest, {});
@@ -151,7 +151,7 @@ const navigationRoute = new NavigationRoute(async ({ event }) => {
   // Check for resources + the app bundle
   // The latter may not exist if the SW is updating to a new version
   const resources = await idbKeyval.get(`resources:${pathname}`)
-  if (!resources || !(await caches.match(`/styled-gatsby-starter-2/app-bb7f7f50d1e7363facff.js`))) {
+  if (!resources || !(await caches.match(`/styled-gatsby-starter-2/app-58404a50e0ce809e4573.js`))) {
     return await fetch(event.request)
   }
 
