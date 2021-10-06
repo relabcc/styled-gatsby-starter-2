@@ -1,7 +1,7 @@
 import styled from '@emotion/styled';
 
 import Box from './Box';
-import { responsive } from './ThemeProvider/theme';
+import { responsive } from './ThemeProvider/responsive';
 
 export const containerWidth = ["26em", "44em", "58em", "76em"];
 export const containerPadding = responsive('1em', '2em')

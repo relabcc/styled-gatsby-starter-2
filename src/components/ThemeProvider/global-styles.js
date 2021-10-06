@@ -1,7 +1,7 @@
 import { css } from '@emotion/react'
 import "focus-visible/dist/focus-visible"
 
-import { mediaStyle } from './theme'
+import { mediaStyle } from './responsive'
 
 export default css`
   body {

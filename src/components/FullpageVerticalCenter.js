@@ -2,7 +2,7 @@ import React, { useContext, useMemo } from 'react';
 import { useMeasure, useWindowSize } from 'react-use';
 
 import Box from './Box'
-import { responsiveCalc } from './ThemeProvider/theme'
+import { responsiveCalc } from './ThemeProvider/responsive'
 import headerContext from '../contexts/header/context'
 
 const Fullpage = ({ children, ...props }) => {

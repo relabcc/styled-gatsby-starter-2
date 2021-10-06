@@ -1,17 +1,17 @@
 import React, { forwardRef } from 'react';
-import { Text } from "@chakra-ui/react";
+import { Text as ChText } from "@chakra-ui/react";
 import range from 'lodash/range';
 import styled from '@emotion/styled'
 
-const ReText = styled(Text)``
+const Text = styled(ChText)``
 
-ReText.Inline = forwardRef((props, ref) => <ReText as="span" {...props} ref={ref} />);
-ReText.Bold = forwardRef((props, ref) => <ReText fontWeight="700" {...props} ref={ref} />);
-ReText.Thin = forwardRef((props, ref) => <ReText fontWeight="200" {...props} ref={ref} />);
+Text.Inline = forwardRef((props, ref) => <Text as="span" {...props} ref={ref} />);
+Text.Bold = forwardRef((props, ref) => <Text fontWeight="700" {...props} ref={ref} />);
+Text.Thin = forwardRef((props, ref) => <Text fontWeight="200" {...props} ref={ref} />);
 
 range(1, 7).forEach((key) => {
-  ReText[`H${key}`] = forwardRef((props, ref) => (
-    <ReText
+  Text[`H${key}`] = forwardRef((props, ref) => (
+    <Text
       as={`h${key}`}
       fontSize={`${5 - key}xl`}
       {...props}
@@ -20,4 +20,4 @@ range(1, 7).forEach((key) => {
   ));
 });
 
-export default ReText
+export default Text

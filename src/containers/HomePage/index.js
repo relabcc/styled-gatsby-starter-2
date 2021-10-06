@@ -9,7 +9,7 @@ import Text from '../../components/Text'
 import Button from '../../components/Button'
 import Link from '../../components/Link'
 import FullpageVerticalCenter from '../../components/FullpageVerticalCenter'
-import { responsive, Media } from '../../components/ThemeProvider/theme';
+import { responsive, Media } from '../../components/ThemeProvider/responsive';
 
 const IndexPage = () => {
   return (

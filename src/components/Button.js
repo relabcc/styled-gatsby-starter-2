@@ -1,23 +1,23 @@
 import React from 'react';
-import { Button } from "@chakra-ui/react";
+import { Button as ChButton } from "@chakra-ui/react";
 
 import Link from './Link'
 
-const ReButton = ({ href, ...props }) => {
-  if (href) return <Button as={p => <Link {...p} href={href} />} {...props} />
-  return <Button {...props} />
+const Button = ({ href, ...props }) => {
+  if (href) return <ChButton as={p => <Link {...p} href={href} />} {...props} />
+  return <ChButton {...props} />
 }
 
-ReButton.defaultProps = {
+Button.defaultProps = {
   colorScheme: 'blue',
 }
 
-ReButton.Secondary = props => (
-  <ReButton colorScheme="green" {...props} />
+Button.Secondary = props => (
+  <Button colorScheme="green" {...props} />
 )
 
-ReButton.Danger = props => (
-  <ReButton colorScheme="red" {...props} />
+Button.Danger = props => (
+  <Button colorScheme="red" {...props} />
 )
 
-export default ReButton
+export default Button
