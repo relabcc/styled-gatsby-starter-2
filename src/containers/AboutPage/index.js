@@ -1,8 +1,7 @@
 import { Button } from '@chakra-ui/button';
-import { Stack } from '@chakra-ui/layout';
+import { Container, Stack } from '@chakra-ui/layout';
 import React from 'react';
 
-import Container from '../../components/Container';
 import Link from '../../components/Link';
 
 import Layout from '../Layout'

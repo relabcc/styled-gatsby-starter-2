@@ -1,13 +1,18 @@
 import React from 'react'
+import { Global } from '@emotion/react'
 
-import ThemeProvider from './src/components/ThemeProvider'
+import { MediaContextProvider } from './src/contexts/responsive'
 import HeaderProvider from './src/contexts/header/Provider'
+import globalStyles from './global-styles';
 
 const Providers = ({ element }) =>
-  <ThemeProvider>
+  <MediaContextProvider>
     <HeaderProvider>
-      {element}
+      <>
+        <Global styles={globalStyles} />
+        {element}
+      </>
     </HeaderProvider>
-  </ThemeProvider>
+  </MediaContextProvider>
 
 export default Providers

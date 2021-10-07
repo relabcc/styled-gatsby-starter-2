@@ -10,7 +10,6 @@ import Header from '../Header'
 
 const Layout = ({ children, ...props }) => {
   const { headerHeight, hideHeader } = useHeader()
-  console.log(props)
   return (
     <StaticQuery
       query={graphql`

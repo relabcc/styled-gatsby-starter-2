@@ -17,11 +17,11 @@ const Header = ({ siteTitle, ...props }) => (
     {...props}
   >
     <Box px="1em" flex={1}>
-      <Text.H1>
+      <Text.H2>
         <Link to="/" color="white">
           {siteTitle}
         </Link>
-      </Text.H1>
+      </Text.H2>
     </Box>
   </Flex>
 )

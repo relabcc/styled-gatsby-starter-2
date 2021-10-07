@@ -37,6 +37,11 @@ const overrides = {
         colorScheme: 'blue',
       },
     },
+    Container: {
+      baseStyle: {
+        maxW: 'container.lg',
+      },
+    },
   },
 }
 
