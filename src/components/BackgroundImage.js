@@ -1,5 +1,4 @@
 import React, { forwardRef } from 'react';
-import { isArray } from 'lodash'
 import { AspectRatio } from '@chakra-ui/react';
 
 import Box from './Box'
@@ -10,7 +9,7 @@ const BGImage = ({ src, children, ...props }) => {
 
   return (
     <Box
-      backgroundImage={`url(${isArray(src) ? pic : src})`}
+      backgroundImage={`url(${Array.isArray(src) ? pic : src})`}
       {...props}
     >
       {children && (

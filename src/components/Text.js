@@ -6,8 +6,8 @@ import styled from '@emotion/styled'
 const Text = styled(ChText)``
 
 Text.Inline = forwardRef((props, ref) => <Text as="span" {...props} ref={ref} />);
-Text.Bold = forwardRef((props, ref) => <Text fontWeight="700" {...props} ref={ref} />);
-Text.Thin = forwardRef((props, ref) => <Text fontWeight="200" {...props} ref={ref} />);
+Text.Bold = forwardRef((props, ref) => <Text fontWeight="bold" {...props} ref={ref} />);
+Text.Thin = forwardRef((props, ref) => <Text fontWeight="thin" {...props} ref={ref} />);
 
 range(1, 7).forEach((key) => {
   Text[`H${key}`] = forwardRef((props, ref) => (

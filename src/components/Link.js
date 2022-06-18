@@ -6,7 +6,7 @@ const Link = forwardRef(({ to, ...props }, ref) => {
   if (to) {
     return <ChLink as={p => <RouterLink to={to} {...p} />} ref={ref} {...props} />
   }
-  return <ChLink target="_blank" ref={ref} {...props} />
+  return <ChLink isExternal ref={ref} {...props} />
 })
 
 export default Link

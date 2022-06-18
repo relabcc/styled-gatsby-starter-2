@@ -3,13 +3,13 @@ import PropTypes from 'prop-types'
 import Helmet from 'react-helmet'
 import { StaticQuery, graphql, withPrefix } from 'gatsby'
 
-import Box from '../../components/Box';
-import useHeader from '../../contexts/header/useHeader'
+import Box from 'components/Box';
+import useHeader from 'contexts/header/useHeader'
 
 import Header from '../Header'
 
-const Layout = ({ children, ...props }) => {
-  const { headerHeight, hideHeader } = useHeader()
+const Layout = ({ children }) => {
+  const { hideHeader } = useHeader()
   return (
     <StaticQuery
       query={graphql`
@@ -41,8 +41,11 @@ const Layout = ({ children, ...props }) => {
               <meta property="og:description" content={description} />
               <meta property="og:image" content={`${siteUrl}/fb.png`} />
             </Helmet>
-            {!hideHeader && <Header height={headerHeight} siteTitle={title} />}
-            <Box as="main" pt={!hideHeader && headerHeight}>
+            {!hideHeader && <Header siteTitle={title} />}
+            <Box
+              as="main"
+              pt={!hideHeader && 'var(--chakra-sizes-header)'}
+            >
               {children}
             </Box>
           </>

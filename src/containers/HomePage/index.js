@@ -1,33 +1,38 @@
 import React from 'react'
 import { FaThumbsUp } from 'react-icons/fa';
-import { Circle, HStack, Stack, Container } from '@chakra-ui/react'
+import { Circle, Stack, Container, Flex, Text, ButtonGroup, Center } from '@chakra-ui/react'
 import { StaticImage } from 'gatsby-plugin-image';
 
-import Flex from '../../components/Flex'
-import Text from '../../components/Text'
-import Button from '../../components/Button'
-import Link from '../../components/Link'
-import FullpageVerticalCenter from '../../components/FullpageVerticalCenter'
-import { Media, responsive } from '../../contexts/responsive';
+import Button from 'components/Button'
+import Link from 'components/Link'
+import { Media } from 'contexts/responsive';
 
 const IndexPage = () => {
   return (
-    <FullpageVerticalCenter>
-      <Container as={Stack} py={responsive(0, '2em')}>
+    <Center>
+      <Container as={Stack} py={{ md: 8 }} spacing={4}>
         <Flex alignItems="center">
-          <Text fontSize={responsive('1em', '1.5em')} color={responsive('red.400', 'green.500', 'blue.500', 'purple.500')}>
-            Styled Components + Styled System 超方便！
+          <Text
+            fontSize={{ base: '1em', md: '1.5em' }}
+            color={{
+              base: 'red.400',
+              md: 'green.500',
+              lg: 'blue.500',
+              xl: 'purple.500',
+            }}
+          >
+            Ggatsby + Chakra UI 超方便！
             <Media lessThan="md">
-              Mobile
+              Mobile {`(< md)`}
             </Media>
             <Media at="md">
-              Tablet
+              Tablet {`(@ md)`}
             </Media>
             <Media at="lg">
-              Laptop
+              Laptop {`(@ lg)`}
             </Media>
             <Media greaterThan="lg">
-              Desktop
+              Desktop {`(> lg)`}
             </Media>
           </Text>
           <Circle size="2em" bg="primary" color="white" mx="1em" >
@@ -38,13 +43,13 @@ const IndexPage = () => {
           alt="Homepage"
           src="../../images/1920x1080.jpg"
         />
-        <HStack spacing="1em">
+        <ButtonGroup spacing="1em" size="lg">
           <Button as={Link} to="/about">關於</Button>
-          <Button.Secondary rightIcon={<FaThumbsUp />}>範例Button</Button.Secondary>
-          <Button disabled>不可點</Button>
-        </HStack>
+          <Button variant="outline" rightIcon={<FaThumbsUp />}>Outline</Button>
+          <Button isDisabled>不可點</Button>
+        </ButtonGroup>
       </Container>
-    </FullpageVerticalCenter>
+    </Center>
   )
 }
 

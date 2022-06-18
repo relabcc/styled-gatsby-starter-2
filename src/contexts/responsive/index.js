@@ -1,7 +1,7 @@
 import { createMedia } from "@artsy/fresnel"
-import { isArray, isNil, mapValues } from "lodash";
-
-import { breakpoints } from '../../@chakra-ui/gatsby-plugin/theme'
+import isNil from "lodash/isNil";
+import mapValues from "lodash/mapValues";
+import breakpoints from "./breakpoints";
 
 const AppMedia = createMedia({
   breakpoints: {
@@ -15,7 +15,7 @@ export const { Media, MediaContextProvider } = AppMedia
 const handleCalc = (syn, a) => isNil(a) ? null : [syn[0], a, syn[1]].join('')
 
 export const responsiveCalc = (syn, resArr) => {
-  return isArray(resArr) ? resArr.map(a => handleCalc(syn, a)) : handleCalc(syn, resArr)
+  return Array.isArray(resArr) ? resArr.map(a => handleCalc(syn, a)) : handleCalc(syn, resArr)
 }
 
 const mobileOffset = 1

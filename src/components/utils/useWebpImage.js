@@ -1,11 +1,11 @@
 import { useMemo } from 'react';
-import { get, isArray } from 'lodash'
+import get from 'lodash/get'
 
 const useWebpImage = (src) => {
   const canUseWebp = typeof window === 'undefined' ? false : get(window, 'Modernizr.webp')
 
   const pic = useMemo(() => {
-    if (!isArray(src)) return null
+    if (!Array.isArray(src)) return null
     return canUseWebp ? src[0] : src[1];
   }, [canUseWebp, src])
 

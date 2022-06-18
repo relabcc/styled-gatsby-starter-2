@@ -33,7 +33,7 @@ const ReImage = forwardRef(({ src, alt, ...props }, ref) => {
   }, [src])
   if (isArray(src)) {
     return (
-      <Image as="picture"{...props}  ref={ref}>
+      <Image as="picture"{...props} ref={ref}>
         {pic.sources.map((s, i) => <source key={i} {...s} />)}
         <img src={pic.fallback} alt={alt} />
       </Image>
