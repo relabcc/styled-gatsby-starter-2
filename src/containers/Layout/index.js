@@ -45,6 +45,7 @@ const Layout = ({ children }) => {
             <Box
               as="main"
               pt={!hideHeader && 'var(--chakra-sizes-header)'}
+              bg="#f6f6f6"
             >
               {children}
             </Box>

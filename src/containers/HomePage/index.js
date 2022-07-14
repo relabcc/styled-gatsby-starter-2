@@ -4,7 +4,6 @@ import { Circle, Stack, Container, Flex, Text, ButtonGroup, Center } from '@chak
 import { StaticImage } from 'gatsby-plugin-image';
 
 import Button from 'components/Button'
-import Link from 'components/Link'
 import { Media } from 'contexts/responsive';
 
 const IndexPage = () => {
@@ -35,7 +34,7 @@ const IndexPage = () => {
               Desktop {`(> lg)`}
             </Media>
           </Text>
-          <Circle size="2em" bg="primary" color="white" mx="1em" >
+          <Circle size="2em" bg="blue.500" color="white" mx="1em" >
             <FaThumbsUp />
           </Circle>
         </Flex>
@@ -44,7 +43,7 @@ const IndexPage = () => {
           src="../../images/1920x1080.jpg"
         />
         <ButtonGroup spacing="1em" size="lg">
-          <Button as={Link} to="/about">關於</Button>
+          <Button to="/about">關於</Button>
           <Button variant="outline" rightIcon={<FaThumbsUp />}>Outline</Button>
           <Button isDisabled>不可點</Button>
         </ButtonGroup>
