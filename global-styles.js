@@ -12,7 +12,6 @@ flex-direction: column;
 export default css`
   html {
     height: 100%;
-    background-color: red;
   }
   body {
     min-width: 100%;
